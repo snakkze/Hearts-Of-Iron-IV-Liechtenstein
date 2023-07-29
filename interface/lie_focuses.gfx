@@ -1,0 +1,66 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_focus_LIE_the_anschluss"
+		texturefile = "gfx/interface/goals/focus_LIE_the_anschluss.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_exile_the_jewish_princess"
+		texturefile = "gfx/interface/goals/focus_LIE_exile_the_jewis_princess.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_castle_of_vaduz"
+		texturefile = "gfx/interface/goals/focus_LIE_castle_of_vaduz.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_adopt_the_reichsmark"
+		texturefile = "gfx/interface/goals/focus_LIE_adopt_the_reichsmark.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_abandon_the_swiss_franc"
+		texturefile = "gfx/interface/goals/focus_LIE_abandon_the_franc.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_habsburg_alliance"
+		texturefile = "gfx/interface/goals/focus_LIE_habsburg_alliance.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_recognize_habsburg_heritage"
+		texturefile = "gfx/interface/goals/focus_LIE_recognize_habsburg_heritage.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_greater_liechtenstein"
+		texturefile = "gfx/interface/goals/focus_LIE_greater_liechtenstein.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_fight_czechia"
+		texturefile = "gfx/interface/goals/focus_LIE_fight_czechia.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_fight_austria"
+		texturefile = "gfx/interface/goals/focus_LIE_fight_austria.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_auh_formed"
+		texturefile = "gfx/interface/goals/focus_LIE_auh_complete.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_auh_north"
+		texturefile = "gfx/interface/goals/focus_LIE_auh_north.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_auh_south"
+		texturefile = "gfx/interface/goals/focus_LIE_auh_south.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_auh_east"
+		texturefile = "gfx/interface/goals/focus_LIE_auh_east.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_form_hre"
+		texturefile = "gfx/interface/goals/focus_LIE_form_hre.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_LIE_form_austria_hungary"
+		texturefile = "gfx/interface/goals/focus_LIE_form_austria_hungary.dds"
+	}
+}

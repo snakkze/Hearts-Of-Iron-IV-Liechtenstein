@@ -1,0 +1,8 @@
+﻿l_english:
+ lie_Historical:0 "§RThis is the Historical Path!§!"
+ lie_militias:0 "Creates 2 §HLiechtensteiner Milizen§! Units in §HLiechtenstein§!."
+ lie_infantery:0 "Creates 1 §HInfanterie-Division§! Unit in §HLiechtenstein§!."
+ lie_landespolizei:0 "Creates 2 §HBewaffnete Landespolizei§! Units in §HLiechtenstein§!."
+ LIE_death_franz_1:0 "Replaces Idea §HFranz I.§! with §HFranz Josef II.§!"
+ LIE_death_franz_2:0 "Removes Idea §HFranz I.§!"
+ LIE_remove_franz_II:0 "Removes Idea §HFranz Josef II.§!"

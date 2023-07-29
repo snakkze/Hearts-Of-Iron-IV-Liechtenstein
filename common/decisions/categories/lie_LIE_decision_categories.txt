@@ -1,0 +1,32 @@
+LIE_formables_category = {
+	priority = 50
+
+	icon = GFX_decision_category_generic_formable_nations
+
+	allowed = {
+		original_tag = LIE
+	}
+
+	visible = {
+		original_tag = LIE
+		NOT = { has_global_flag = LIE_alpine_republic }
+	}
+}
+
+LIE_integrate_puppets = {
+	priority = 100
+
+	icon = GFX_decision_category_generic_political_actions
+
+	allowed = {
+		original_tag = LIE
+	}
+
+	visible = {
+		LIE = {
+			has_completed_focus = LIE_orchestrate_a_coup_in_hungary
+		}
+		original_tag = LIE
+		NOT = { has_global_flag = LIE_integrated_hungary }
+	}
+}
