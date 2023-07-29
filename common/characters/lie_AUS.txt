@@ -1,0 +1,16 @@
+characters={
+
+	AUS_archduchess_of_austria={
+		name="Hedwig of Austria"
+		portraits={
+			civilian={
+				large=GFX_portrait_AUS_hedwig_of_austria
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1956.01.01.01"
+			id=-1
+		}
+	}
+}

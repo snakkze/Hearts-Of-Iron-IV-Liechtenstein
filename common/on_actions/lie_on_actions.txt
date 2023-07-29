@@ -1,0 +1,219 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			
+		}
+	}
+
+	# country
+	on_civil_war_end = {
+		effect = {
+			if = {
+				limit = {
+					AND = {
+						FROM = {
+							original_tag = HUN
+							NOT = {
+								has_cosmetic_tag = HABS_MILITIAS
+							}
+						}
+						ROOT = {
+							has_cosmetic_tag = HABS_MILITIAS
+						}
+					}
+				}
+				HUN = {
+					set_cosmetic_tag = HABS_HUN
+					promote_character = HUN_otto_von_habsburg
+					set_politics = {
+						ruling_party = neutrality
+						election_frequency = 36
+						elections_allowed = no
+					}
+				}
+				LIE = {
+					puppet = HUN
+					mark_focus_tree_layout_dirty = yes
+				}
+				news_event = { id = news_lie.3 hours = 12 } 
+			}
+		}
+	}
+
+	on_daily_LIE= {
+		effect = {
+			if = {
+				limit = {
+					AND = {
+						date > 1938.07.25
+						NOT = {
+							LIE = { has_country_flag = death_of_franz_I }
+						}
+					}
+				}
+				LIE = { country_event = { id = lie_LIE.10 } }
+				set_country_flag = death_of_franz_I
+			}
+
+			if = {
+				limit = {
+					AND = {
+						date > 1939.03.24
+						LIE = {
+							has_completed_focus = LIE_the_anschluss
+						}
+						GER = {						
+							has_completed_focus = GER_anschluss
+						}
+						NOT = {
+							LIE = { has_country_flag = attempted_coup }
+						}
+					}
+				}
+				LIE = { country_event = { id = lie_LIE.26 } }
+				set_country_flag = attempted_coup
+			}
+
+			if = {
+				limit = {
+					AND = {
+						date > 1939.12.13
+						LIE = {
+							NOT = {
+								has_country_flag = german_ultimatum
+								is_in_faction_with = GER
+							}
+							has_country_flag = imprisoned_ss
+						}
+					}
+				}
+				LIE = { country_event = { id = lie_LIE.30 } }
+				set_country_flag = german_ultimatum
+			}
+
+			if = {
+				limit = {
+					AND = {
+						AUS = {
+							has_government = neutrality
+							has_cosmetic_tag = HABS_AUS
+						}
+						CZE = {
+							has_government = neutrality
+							has_cosmetic_tag = HABS_CZE
+						}
+						NOT = {
+							has_country_flag = habsburg_countries
+						}
+					}
+				}
+				news_event = { id = news_lie.2 hours = 12 } 
+				set_country_flag = habsburg_countries
+			}
+		}
+	}
+
+	on_daily_GER = {
+		effect = {
+			if = {
+				limit = {
+					AND = {
+						GER = {
+							focus_progress = {
+								focus = GER_anschluss
+								progress > 0.9
+							}
+						}
+						LIE = {
+							has_completed_focus = LIE_recognize_the_habsburg_heritage
+						}
+					}
+				}
+				# Bypass Anschluss
+				unlock_national_focus = GER_anschluss
+			}
+		}
+	}
+
+	on_daily_CZE = {
+		effect = {
+			if = {
+				limit = {
+					CZE = {
+						neutrality > 0.55
+						has_idea = LIE_rekindle_imperial_sentiment
+						NOT = {
+							has_idea = HUN_habsburg_restored
+						}
+					}
+				}
+				CZE = {
+					set_politics = {
+						ruling_party = neutrality
+						election_frequency = 36
+						elections_allowed = no
+					}
+					#diplomatic_relation = {
+					#	country = ROM
+					#	relation = non_aggression_pact
+					#	active = yes
+					#}
+					#diplomatic_relation = {
+					#	country = FRA
+					#	relation = non_aggression_pact
+					#	active = yes
+					#}
+					set_cosmetic_tag = HABS_CZE 
+					retire_country_leader = yes
+					CZE_eduard_franz_joseph_max = {
+						add_country_leader_role = {
+						country_leader = {
+							expire = "1965.1.1"
+							ideology = despotism
+							traits = { }
+						}
+						promote_leader = yes
+						}
+					}
+					remove_ideas = { LIE_rekindle_imperial_sentiment }
+				}
+			}
+		}
+	}
+
+	on_daily_AUS = {
+		effect = {
+			if = {
+				limit = {
+					AUS = {
+						neutrality > 0.65
+						has_idea = LIE_rekindle_imperial_sentiment
+						NOT = {
+							has_idea = HUN_habsburg_restored
+						}
+					}
+				}
+				AUS = {
+					set_politics = {
+						ruling_party = neutrality
+						election_frequency = 36
+						elections_allowed = no
+					}
+					set_cosmetic_tag = HABS_AUS
+					retire_country_leader = yes
+					AUS_archduchess_of_austria = {
+						add_country_leader_role = {
+						country_leader = {
+							expire = "1965.1.1"
+							ideology = despotism
+							traits = { }
+						}
+						promote_leader = yes
+						}
+					}
+					remove_ideas = { LIE_rekindle_imperial_sentiment }
+				}
+			}
+		}
+	}
+}

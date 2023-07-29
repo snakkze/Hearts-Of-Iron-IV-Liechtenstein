@@ -1,0 +1,436 @@
+ideas = {
+	country = {
+
+		# focus = influence austria and czechia
+		LIE_rekindle_imperial_sentiment = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = HUN_hungarian_monarchy
+
+			modifier = {
+				neutrality_drift = 0.5
+			}
+		}
+
+		# focus = habsburg alliance
+		LIE_double_monarchy = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = lie_double_monarchy
+
+			modifier = {
+				neutrality_drift = 0.05
+				war_support_weekly = 0.025
+			}
+		}
+
+		LIE_idea_franz_I = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = lie_franz_I
+
+			modifier = {
+				stability_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05				
+			}
+		}
+
+		LIE_idea_franz_josef_II = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = lie_franz_josef_II
+
+			modifier = {
+				stability_factor = 0.15
+				drift_defence_factor = 0.15
+				research_speed_factor = 0.05
+				fascism_acceptance = -100
+			}
+		}
+
+		# focus = increase monarchist support
+		LIE_convince_the_people = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = generic_neutrality_drift_bonus
+
+			modifier = {
+				neutrality_drift = 0.25
+			}
+		}
+
+		# focus = reformed currency
+		LIE_reformed_currency = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = generic_economic_increase
+
+			modifier = {
+				industrial_capacity_factory = 0.15
+				stability_weekly = 0.01
+			}
+		}
+
+		LIE_increased_conscriptions = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = generic_reserve_divisions
+
+			modifier = {
+				conscription = 0.025
+				weekly_manpower = 50
+				training_time_army_factor = 0.015
+			}
+		}
+
+		LIE_formed_austria_hungary = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = lie_austria_hungary_formed
+
+			modifier = {
+				stability_weekly = 0.025
+				political_power_gain = 0.5
+				drift_defence_factor = 0.1
+				army_attack_factor = 0.25
+				army_core_attack_factor = 0.5
+			}
+		}
+
+		LIE_idea_neutrality = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = neutrality_idea
+
+			modifier = { 
+				#generate_wargoal_tension = 1.00
+				#lend_lease_tension = 0.50
+				send_volunteers_tension = 0.20
+				guarantee_tension = 1.0
+				embargo_threshold_factor = 2.5
+				army_chief_cost_factor = 2 
+				democratic_drift = 0.01
+				opinion_gain_monthly_factor = -0.2
+				enemy_justify_war_goal_time = 2.5
+				ai_badass_factor = 0.01    # Will receive 1% of the threat from others
+				join_faction_tension = 1.00
+				ai_get_ally_desire_factor = -150
+			}
+		}
+
+		LIE_idea_democratic_influence = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+			
+			modifier = {
+				democratic_drift = 0.25
+			}
+		}
+
+		LIE_idea_fascist_influence = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+			
+			modifier = {
+				fascism_drift = 0.25
+				#fascism_acceptance = 85
+			}
+		}
+
+		LIE_german_propaganda_influence = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+			
+			modifier = {
+				fascism_drift = 0.5
+				drift_defence_factor = -0.25
+			}
+		}
+
+		LIE_adopted_reichsmark = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_economic_increase
+
+			modifier = {
+				industrial_capacity_factory = 0.15
+				stability_weekly = 0.01
+				fascism_drift = 0.1
+				fascism_acceptance = 75
+			}
+		}
+
+		LIE_veiled_elections = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_monarchist_uprising
+
+			modifier = {
+				stability_factor = -0.15
+				fascism_drift = 100
+				drift_defence_factor = 1
+				fascism_acceptance = 100
+			}
+		}
+
+		LIE_league_of_nations_member = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = lie_league_of_nations
+
+			modifier = {
+				stability_factor = 0.15
+				democratic_acceptance = 75
+			}
+		}
+
+		LIE_foreign_investments_idea = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1 
+
+			picture = tur_balkan_central_bank_wealthy_greece
+
+			modifier = {
+				production_speed_buildings_factor = 0.2
+				political_power_factor = 0.1
+			}
+		}
+
+		LIE_idea_ideological_defense = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1 
+
+			picture = generic_fascism_banned
+
+			modifier = {
+				drift_defence_factor = 0.25
+			}
+		}
+
+		LIE_idea_reformed_government = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1 
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				political_power_factor = -0.05
+				stability_weekly_factor = 0.075
+				drift_defence_factor = -0.05
+			}
+		}
+
+		LIE_idea_economic_boom = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1 
+
+			picture = generic_economic_increase
+
+			modifier = {
+				stability_factor = 0.15
+				industrial_capacity_factory = 0.15
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05	
+				consumer_goods_factor = 0.40
+			}
+		}
+
+		LIE_formed_hre = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = lie_hre
+
+			modifier = {
+				stability_weekly = 0.025
+				political_power_gain = 0.5
+				drift_defence_factor = 0.1
+				army_attack_factor = 0.25
+				army_core_attack_factor = 0.5
+			}
+		}
+
+		# focus = habsburg alliance
+		LIE_claimed_hre_crown = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = HUN_hungarian_monarchy
+
+			modifier = {
+				neutrality_drift = 0.05
+				war_support_weekly = 0.025
+				stability_weekly = 0.025
+			}
+		}
+	}
+}
