@@ -1,0 +1,16 @@
+characters={
+
+	CZE_eduard_franz_joseph_max={
+		name="Eduard Franz Joseph Max Maria of Coudenhove"
+		portraits={
+			civilian={
+				large=GFX_portrait_CZE_franz_joseph_max
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1956.01.01.01"
+			id=-1
+		}
+	}
+}

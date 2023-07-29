@@ -1,0 +1,1058 @@
+add_namespace = lie_LIE
+
+# establish ties(invite otto)
+country_event = {
+	id = lie_LIE.1
+	title = lie_LIE.1.t
+	desc = lie_LIE.1.d
+	picture = GFX_report_event_generic_handshake
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	major = yes
+
+	option = {
+		name = lie_LIE.1.a
+		complete_national_focus = LIE_invite_the_habsburg
+	}
+}
+
+# swiss ties
+country_event = {
+	id = lie_LIE.2
+	title = lie_LIE.2.t
+	desc = lie_LIE.2.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	option = {
+		name = lie_LIE.2.a
+		SWI = {
+			add_opinion_modifier = { target = LIE modifier = large_decrease }
+			if = {
+				limit = {
+					has_guaranteed = LIE
+				}
+				diplomatic_relation = {
+					country = LIE
+					relation = guarantee
+					active = no
+				}
+			}
+		}
+	}
+}
+
+# new currency
+country_event = {
+	id = lie_LIE.3
+	title = lie_LIE.3.t
+	desc = lie_LIE.3.d
+	picture = GFX_report_event_total_war
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	option = {
+		name = lie_LIE.3.a
+		LIE = {
+			add_timed_idea = { idea = LIE_reformed_currency days = 356 }
+		}
+	}
+}
+
+# Austria Hungary internal
+country_event = {
+	id = lie_LIE.4
+	title = lie_LIE.4.t
+	desc = lie_LIE.4.d
+	picture = GFX_report_event_generic_military_parade
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	option = {
+		name = lie_LIE.4.a
+		LIE = {
+			add_timed_idea = { idea = LIE_formed_austria_hungary days = 356 }
+			set_cosmetic_tag = LIE_HUN
+			set_major = yes
+		}
+		news_event = { id = news_lie.4 hours = 12 } 
+	}
+}
+
+#protect Czechoslovakia
+country_event = {
+	id = lie_LIE.5 
+	title = lie_LIE.5.t
+	desc = lie_LIE.5.d
+	picture = GFX_report_event_czech_soldiers_01
+	
+	is_triggered_only = yes
+
+	option = { #Agree to join the Empire
+		name = lie_LIE.5.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip =  GAME_OVER_TT
+		LIE = { country_event = { id = lie_LIE.6 hours = 6 } }
+		
+	}
+
+	option = { #Refuse
+		name = lie_LIE.5.b
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction = yes
+				factor = 2 #we're good thanks
+			}
+			modifier = {
+				HUN = {
+					is_ai = yes
+				}
+				factor = 0
+			}
+			modifier = {
+				LIE = {
+					is_ai = yes
+				}
+				factor = 0
+			}
+		}
+		LIE = { country_event = { id = lie_LIE.7 hours = 6 } }
+		set_country_flag = HUN_AH_CZE_refused #needed for munich chain
+	}
+
+}
+
+#Annex CZE
+country_event = {
+	id = lie_LIE.6
+	title = lie_LIE.6.t
+	desc = lie_LIE.6.d
+	picture = GFX_report_event_polish_army
+	
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.6.a
+		CZE = {
+			every_unit_leader = {
+				set_nationality = LIE
+			}
+		}
+		annex_country = { target = CZE transfer_troops = yes }
+		LIE = { set_country_flag = CZE_annexed_peacefully } # Used to change division name lists for HUN
+		add_state_core = 69
+		add_state_core = 9
+		add_state_core = 75
+		add_state_core = 70
+		add_state_core = 74
+		add_state_core = 71
+		add_state_core = 73
+		add_state_core = 72
+		add_state_core = 664
+	}
+}
+
+#CZE refuses
+country_event = {
+	id = lie_LIE.7
+	title = lie_LIE.7.t
+	desc = lie_LIE.7.d
+	picture = GFX_report_event_czech_soldiers_02
+	
+	is_triggered_only = yes
+
+	option = { #say no
+		name = lie_LIE.7.a
+			add_state_core = 69
+			add_state_core = 9
+			add_state_core = 75
+			add_state_core = 70
+			add_state_core = 74
+			add_state_core = 71
+			add_state_core = 73
+			add_state_core = 72
+			add_state_core = 664
+			random_country = {
+				limit = {
+					owns_state = 69
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 69 9 75 70 74 71 73 72 664 }
+					}
+				}
+			}
+	}
+}
+
+# Franz Josef I/II royale dictatorship
+country_event = {
+	id = lie_LIE.8
+	title = lie_LIE.8.t
+	desc = lie_LIE.8.d
+	picture = GFX_report_event_generic_rally_3
+	
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.8.a
+		LIE = {
+			add_ideas = LIE_veiled_elections
+			if = {
+				limit = {
+					has_country_leader = {
+						character = LIE_franz_I
+						ruling_only = yes
+					}
+				}
+				promote_character = LIE_franz_I_f
+			}
+			else_if = {
+				limit = {
+					has_country_leader = {
+						character = LIE_franz_II
+						ruling_only = yes
+					}
+				}
+				promote_character = LIE_franz_II_f
+			}
+		}
+		set_politics = {
+			ruling_party = fascism
+			election_frequency = 36
+			elections_allowed = no
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = neutrality
+				long_name = LIE_neutrality_party_long_alt
+				name = LIE_neutrality_party_alt
+			}
+			set_party_name = {
+				ideology = fascism
+				long_name = LIE_fascism_party_royale
+				name = LIE_fascism_party_royale
+			}
+			set_popularities = {
+			neutrality = 0
+			fascism = 100
+			democratic = 0
+			}
+			set_party_name = {
+				ideology = neutrality
+				long_name = LIE_neutrality_party_long_alt
+				name = LIE_neutrality_party_alt
+			}
+			set_party_name = {
+				ideology = fascism
+				long_name = LIE_fascism_party_royale
+				name = LIE_fascism_party_royale
+			}
+		}
+	}
+}
+
+# Anschluss(Franz I gets King)
+country_event = {
+	id = lie_LIE.9
+	title = lie_LIE.9.t
+	desc = lie_LIE.9.d
+	picture = GFX_report_event_generic_peaceful_annexation
+	
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.9.a
+		promote_character = LIE_franz_II
+		add_ideas = LIE_idea_franz_I
+	}
+}
+
+# Death of Franz I
+country_event = {
+	id = lie_LIE.10
+	title = lie_LIE.10.t
+	desc = lie_LIE.10.d
+	picture = GFX_report_event_generic_funeral
+	
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.10.a
+		if = {
+			limit = {
+				has_country_leader = {
+					character = LIE_franz_I
+					ruling_only = yes
+				}
+			}
+			retire_character = LIE_franz_I
+			hidden_effect = {
+				retire_character = LIE_franz_I_f
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_leader = {
+					character = LIE_franz_I_f
+					ruling_only = yes
+				}
+			}
+			retire_character = LIE_franz_I_f
+			promote_character = LIE_franz_II_f
+			hidden_effect = {
+				retire_character = LIE_franz_I
+			}
+		}
+		else = {
+			retire_character = LIE_franz_I
+			retire_character = LIE_franz_I_f
+		}
+		add_stability = -0.1
+		if = {
+			limit = {
+				has_completed_focus = LIE_royale_marriage
+			}
+			hidden_effect = {
+				remove_ideas = LIE_idea_franz_I
+				add_ideas = LIE_idea_franz_josef_II
+			}
+			
+		}
+		else_if = {
+			hidden_effect = {
+				remove_ideas = LIE_idea_franz_I
+			}
+		}
+	}	
+}
+
+# Abolished Monarchy(democratic)
+country_event = {
+	id = lie_LIE.11
+	title = lie_LIE.11.t
+	desc = lie_LIE.11.d
+	picture = GFX_report_event_ITA_democratic_parlament
+	
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.11.a
+		ai_chance = {
+			base = 50
+		}
+		set_politics = {
+			ruling_party = democratic
+			election_frequency = 36
+			elections_allowed = yes
+		}
+		promote_character = LIE_otto_schaedler
+		hidden_effect = {
+			remove_ideas = {
+				LIE_idea_franz_I
+				LIE_idea_franz_josef_II
+			}
+		}
+	}
+
+	option = {
+		name = lie_LIE.11.b
+		ai_chance = {
+			base = 50
+		}
+		set_politics = {
+			ruling_party = democratic
+			election_frequency = 36
+			elections_allowed = yes
+		}
+		promote_character = LIE_josef_hoop
+		hidden_effect = {
+			remove_ideas = {
+				LIE_idea_franz_I
+				LIE_idea_franz_josef_II
+			}
+		}
+	}
+}
+
+# Ask US for invest
+country_event = { 
+    id = lie_LIE.12
+    title = lie_LIE.12.t
+    desc = lie_LIE.12.d
+    picture = GFX_report_event_SWI_cantons_flags_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.12.a
+		ai_chance = {
+			base = 100 
+		}
+		LIE = {
+			country_event = { id = lie_LIE.13 hours = 3 }
+		}
+		effect_tooltip = {
+			LIE = {
+				add_timed_idea = { 
+					idea = LIE_foreign_investments_idea
+					days = 730 
+				}
+			}
+		}
+	}
+
+	option = {
+		name = lie_LIE.12.b
+		LIE = {
+			country_event = { id = lie_LIE.14 hours = 4  }
+		}
+	}
+}
+
+# US says yes
+country_event = {
+    id = lie_LIE.13
+    title = lie_LIE.13.t
+    desc = lie_LIE.13.d
+    picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.13.a
+		ai_chance = {
+			base = 10 
+		}
+		add_timed_idea = { 
+			idea = LIE_foreign_investments_idea 
+			days = 730 
+		}	
+		LIE = {
+			add_opinion_modifier = { target = USA modifier = large_increase }
+		}
+	}
+}
+
+# US says no
+country_event = {
+    id = lie_LIE.14
+    title = lie_LIE.14.t
+    desc = lie_LIE.14.d
+    picture = GFX_report_event_canada_patriation
+
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.14.a
+		ai_chance = {
+			base = 10 
+		}
+		add_popularity = {
+			ideology = democratic 
+			popularity = -0.05
+		}
+		LIE = {
+			add_opinion_modifier = { target = USA modifier = large_decrease }
+		}
+	}
+}
+
+# ask major democracies for guarantee
+country_event = {
+    id = lie_LIE.15
+    title = lie_LIE.15.t
+    desc = lie_LIE.15.d
+    picture = GFX_report_event_SWI_cantons_flags_soldiers
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+		}
+	}
+
+	option = {
+		name = lie_LIE.15.a
+		ai_chance = {
+			base = 10 
+			modifier = {
+				add = 10 
+				has_opinion = {
+					target = LIE
+					value > 10
+				}
+			}
+			modifier = {
+				add = 20
+				has_opinion = {
+					target = LIE
+					value > 20
+				}
+			}
+			modifier = {
+				add = 30 
+				has_opinion = {
+					target = LIE
+					value > 30
+				}
+			}
+		}
+		FROM = {
+			country_event = { id = lie_LIE.16 hours = 3 }
+		}
+		effect_tooltip = {
+			FROM = {
+				give_guarantee = LIE
+			}
+			add_opinion_modifier = {
+				target = LIE 
+				modifier = large_increase
+			}
+		}
+	}
+
+	option = {
+		name = lie_LIE.15.b
+		ai_chance = {
+			base = 10 
+			modifier = {
+				factor = 5
+				has_opinion = {
+					target = LIE
+					value < 1
+				}
+			}
+		}
+		FROM = {
+			country_event = { id = lie_LIE.17 hours = 4  }
+		}
+	}
+}
+
+# Accepted
+country_event = {
+    id = lie_LIE.16
+    title = lie_LIE.16.t
+    desc = lie_LIE.16.d
+    picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = { #Good News everyone!   
+		name = lie_LIE.16.a
+		ai_chance = {
+			base = 10 
+		}
+
+		FROM = {
+			give_guarantee = LIE
+		}
+
+		FROM = {
+			add_opinion_modifier = {
+				target = LIE 
+				modifier = large_increase
+			}
+		}
+	}
+}
+
+# Rejected
+country_event = {
+    id = lie_LIE.17
+    title = lie_LIE.17.t
+    desc = lie_LIE.17.d
+    picture = GFX_report_event_canada_patriation
+
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.17.a
+		ai_chance = {
+			base = 10 
+		}
+		add_popularity = {
+			ideology = democratic 
+			popularity = -0.05
+		}
+	}
+}
+
+# Answer Swiss Ultimatum
+country_event = {
+    id = lie_LIE.18
+    title = lie_LIE.18.t
+    desc = lie_LIE.18.d
+    picture = GFX_report_event_ITA_democratic_parlament
+
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.18.a
+		ai_chance = {
+			base = 10 
+		}
+		add_ideas = LIE_idea_reformed_government
+	}
+}
+
+# Exile the jewis princess?
+country_event = {
+    id = lie_LIE.19
+    title = lie_LIE.19.t
+    desc = lie_LIE.19.d
+    picture = GFX_report_event_ITA_democratic_parlament
+
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.19.a
+		ai_chance = {
+			base = 100 
+		}
+		add_stability = 0.1
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+		}
+		set_country_flag = exiled_the_princess
+		retire_character = LIE_elisabeth_von_gutmann
+		custom_effect_tooltip = lie_Historical
+	}
+	option = {
+		name = lie_LIE.19.b
+		add_stability = -0.1
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+		}
+	}
+}
+
+#protect swiss
+country_event = {
+	id = lie_LIE.20
+	title = lie_LIE.20.t
+	desc = lie_LIE.20.d
+	picture = GFX_report_event_czech_soldiers_01
+	
+	is_triggered_only = yes
+
+	option = { #Agree to join liechtenstein
+		name = lie_LIE.20.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip =  GAME_OVER_TT
+		LIE = { country_event = { id = lie_LIE.21 hours = 6 } }
+		
+	}
+
+	option = { #Refuse
+		name = lie_LIE.20.b
+		ai_chance = {
+			base = 0
+		}
+		#HUN = { country_event = { id = lie_LIE.7 hours = 6 } }
+		#set_country_flag = HUN_AH_CZE_refused #needed for munich chain
+	}
+
+}
+
+#Annex swiss
+country_event = {
+	id = lie_LIE.21
+	title = lie_LIE.21.t
+	desc = lie_LIE.21.d
+	picture = GFX_report_event_polish_army
+	
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.21.a
+		SWI = {
+			every_unit_leader = {
+				set_nationality = LIE
+			}
+		}
+		annex_country = { target = SWI transfer_troops = yes }
+		add_state_claim = 151
+		add_state_claim = 847
+		add_state_claim = 846
+		add_state_claim = 3
+		add_state_claim = 845
+	}
+}
+
+#protect Austria
+country_event = {
+	id = lie_LIE.22
+	title = lie_LIE.22.t
+	desc = lie_LIE.22.d
+	picture = GFX_report_event_czech_soldiers_01
+	
+	is_triggered_only = yes
+
+	option = { #Agree to join the imperial ambissions
+		name = lie_LIE.22.a
+		ai_chance = {
+			factor = 20
+			modifier = {
+				threat > 20
+				factor = 1.3
+			}
+			modifier = {
+				threat > 40
+				factor = 1.3
+			}
+			modifier = {
+				threat > 60
+				factor = 1.3
+			}
+			modifier = {
+				has_non_aggression_pact_with = LIE
+				factor = 1.5
+			}
+			modifier = {
+				is_in_faction = no
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					focus_progress = { 
+						focus = GER_anschluss 
+						progress > 0 
+					}
+				}
+				factor = 10 #ohshitohshitohshit
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.75
+			}
+			modifier = {
+				has_opinion = {
+					target = LIE
+					value > 65
+				}
+				factor = 1.5
+			}
+		}
+		custom_effect_tooltip =  GAME_OVER_TT
+		LIE = { country_event = { id = lie_LIE.23 hours = 6 } }
+		
+	}
+
+	option = { #Refuse
+		name = lie_LIE.22.b
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction = yes
+				factor = 2 #we're good thanks
+			}
+			modifier = {
+				HUN = {
+					is_ai = yes
+				}
+				factor = 0
+			}
+			modifier = {
+				LIE = {
+					is_ai = yes
+				}
+				factor = 0
+			}
+		}
+		AUS = { country_event = { id = lie_LIE.24 hours = 6 } }
+	}
+}
+
+#Annex AUS
+country_event = {
+	id = lie_LIE.23
+	title = lie_LIE.23.t
+	desc = lie_LIE.23.d
+	picture = GFX_report_event_polish_army
+	
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.23.a
+		AUS = {
+			every_unit_leader = {
+				set_nationality = LIE
+			}
+		}
+		annex_country = { target = AUS transfer_troops = yes }
+		add_state_claim = 152
+		add_state_claim = 153
+		add_state_claim = 848
+		add_state_claim = 4	
+	}
+}
+
+#AUS refuses
+country_event = {
+	id = lie_LIE.24
+	title = lie_LIE.24.t
+	desc = lie_LIE.24.d
+	picture = GFX_report_event_czech_soldiers_02
+	
+	is_triggered_only = yes
+
+	option = { #say no
+		name = lie_LIE.24.a
+		add_state_claim = 152
+		add_state_claim = 153
+		add_state_claim = 848
+		add_state_claim = 4
+		random_country = {
+			limit = {
+				owns_state = 4
+			}
+			LIE = {
+				create_wargoal = {
+					type = take_state_focus
+					target = PREV
+					expire = 0
+					generator = { 4 152 153 848 }
+				}
+			}
+		}
+	}
+}
+
+# Holy Roman Empire formed
+country_event = {
+	id = lie_LIE.25
+	title = lie_LIE.25.t
+	desc = lie_LIE.25.d
+	picture = GFX_report_event_generic_military_parade
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	option = {
+		name = lie_LIE.25.a
+		LIE = {
+			add_timed_idea = { idea = LIE_formed_hre days = 356 }
+			set_cosmetic_tag = HRE
+			set_major = yes
+		}
+		news_event = { id = news_lie.5 hours = 12 } 
+	}
+}
+
+# coup in liechtenstein
+country_event = {
+	id = lie_LIE.26
+	title = lie_LIE.26.t
+	desc = lie_LIE.26.d
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	# Send the Police
+	option = {
+		name = lie_LIE.26.a
+		ai_chance = {
+			base = 100 
+		}
+		LIE = {
+			LIE = { country_event = { id = lie_LIE.27 } }
+		}
+		custom_effect_tooltip = lie_Historical
+	}
+
+	# Its not worth sending the police
+	option = {
+		name = lie_LIE.26.b
+		LIE = {
+			if = {
+				limit = {
+					has_country_flag = exiled_the_princess
+				}
+				LIE = { country_event = { id = lie_LIE.29 } }
+			}
+			else = {				
+				LIE = { country_event = { id = lie_LIE.28 } }
+			}
+		}
+	}
+}
+
+# police send
+country_event = {
+	id = lie_LIE.27
+	title = lie_LIE.27.t
+	desc = lie_LIE.27.d
+	picture = GFX_report_event_generic_soldiers_surrendering
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	# imprison them
+	option = {
+		name = lie_LIE.27.a
+		LIE = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+		}
+		set_country_flag = imprisoned_ss
+		news_event = { id = news_lie.7 hours = 12 } 
+	}
+}
+ 
+# police not send
+country_event = {
+	id = lie_LIE.28
+	title = lie_LIE.28.t
+	desc = lie_LIE.28.d
+	picture = GFX_report_event_generic_parliament
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	# promote lizzy
+	option = {
+		name = lie_LIE.28.a
+		LIE = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+			if = {
+				limit = {
+					has_country_leader = {
+						character = LIE_franz_II
+						ruling_only = yes
+					}
+				}
+				kill_country_leader = yes
+			}
+			else = {
+				retire_character = LIE_franz_II
+			}
+			promote_character = LIE_elisabeth_von_gutmann
+			news_event = { id = news_lie.8 hours = 12 } 
+		}
+	}
+}
+
+# police not send exiled
+country_event = {
+	id = lie_LIE.29
+	title = lie_LIE.29.t
+	desc = lie_LIE.29.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	# goop takes over
+	option = {
+		name = lie_LIE.29.a
+		LIE = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = fascism
+				election_frequency = 36
+				elections_allowed = no
+			}
+			if = {
+				limit = {
+					has_country_leader = {
+						character = LIE_franz_II
+						ruling_only = yes
+					}
+				}
+				kill_country_leader = yes
+			}
+			else = {
+				retire_character = LIE_franz_II
+			}
+			promote_character = LIE_alfons_goop
+			GER = {
+				puppet = LIE
+			}
+			news_event = { id = news_lie.6 hours = 12 } 
+			hidden_effect = {
+				set_country_flag = goop_coup
+			}
+		}
+	}
+}
+
+# german ultimatum
+country_event = {
+	id = lie_LIE.30
+	title = lie_LIE.30.t
+	desc = lie_LIE.30.d
+	picture = GFX_report_event_generic_soldiers_surrendering
+
+	is_triggered_only = yes
+
+	fire_only_once=yes
+
+	# we will back off
+	option = {
+		name = lie_LIE.30.a
+		ai_chance = {
+			base = 100 
+		}
+		LIE = {
+			add_stability = -0.1
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+		}
+	}
+	# Our prisoners, our rules
+	option = {
+		name = lie_LIE.30.b
+		LIE = {
+			add_stability = -0.15
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+		}
+		GER = {
+			declare_war_on = {
+				target = LIE
+				type = annex_everything
+			}
+		}
+		set_country_flag = LIE_prisoner_war
+	}
+}
+ 

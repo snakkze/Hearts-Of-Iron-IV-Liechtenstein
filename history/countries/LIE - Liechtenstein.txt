@@ -1,0 +1,135 @@
+﻿capital = 909
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	gw_artillery = 1
+	tech_support = 1		
+	tech_engineers = 1
+	basic_train = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+	}
+}
+set_war_support = 0.1
+set_stability = 0.8
+
+# neutrality
+recruit_character = LIE_franz_I
+recruit_character = LIE_franz_II
+recruit_character = LIE_elisabeth_von_gutmann
+recruit_character = LIE_archduchess_of_austria
+
+# fascism
+recruit_character = LIE_alfons_goop
+recruit_character = LIE_franz_I_f
+recruit_character = LIE_franz_II_f
+
+# democracy
+recruit_character = LIE_otto_schaedler
+recruit_character = LIE_josef_hoop
+
+# communism
+recruit_character = LIE_wilhelm_beck
+
+recruit_character = LIE_hermann_meier
+recruit_character = LIE_josef_brunhart
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	complete_national_focus = LIE_deny_our_heritage
+	complete_national_focus = LIE_international_neutrality
+	complete_national_focus = LIE_answer_swiss_ultimatum
+	complete_national_focus = LIE_ideological_defense
+	complete_national_focus = LIE_fortify_vaduz
+	complete_national_focus = LIE_the_anschluss
+	complete_national_focus = LIE_castle_of_vaduz
+	complete_national_focus = LIE_exile_elisabeth_von_gutmann
+	
+	set_technology = {
+		tech_recon = 1
+		interwar_artillery = 1
+		interwar_antiair = 1
+		
+		#doctrines
+		air_superiority = 1
+		
+		mass_assault = 1
+		pocket_defence = 1
+		defence_in_depth = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		concentrated_industry = 1
+		concentrated_industry2 = 1
+	}
+	if = {
+		limit = {
+			NOT = { has_dlc = "By Blood Alone" }
+		}
+		set_technology = {
+			fighter1 = 1
+		}
+	}
+}
+
+
+add_ideas = {
+	LIE_idea_neutrality
+}
+
+SWI = {
+	give_guarantee = LIE
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1932.03.13.12"
+	election_frequency = 36
+	elections_allowed = no
+}
+set_popularities = {
+	neutrality = 65
+	fascism = 5
+	democratic = 30
+}
+
+1939.1.1 = {
+	set_country_flag = death_of_franz_I
+	set_country_flag = attempted_coup
+	set_country_flag = imprisoned_ss
+	set_country_flag = exiled_the_princess
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1936.02.16.12"
+		election_frequency = 36
+		elections_allowed = no
+	}
+	set_popularities = {
+	neutrality = 65
+	fascism = 10
+	democratic = 25
+}
+	promote_character = LIE_franz_II
+	retire_character = LIE_franz_I
+}

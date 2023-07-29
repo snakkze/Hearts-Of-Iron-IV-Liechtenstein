@@ -1,0 +1,62 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_portrait_LIE_wilhelm_beck"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Wilhelm_Beck.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_josef_hoop"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Josef_Hoop.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_josef_brunhart"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Josef_Brunhart.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_hermann_meier"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Hermann_Meier.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_elisabeth_von_gutmann"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Elisabeth_Von_Gutmann.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_otto_schaedler"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Otto_Schaedler.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_alfons_goop"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Alfons_Goop.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_franz_II_f"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Franz_II_fascism.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_franz_I_f"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Franz_I_fascism.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_HUN_habsburg_militias"
+		texturefile = "gfx/leaders/HUN/portrait_HUN_habsburg_militias.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_CZE_franz_joseph_max"
+		texturefile = "gfx/leaders/CZE/Portrait_Czechia_Franz_Joseph_Max.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_AUS_hedwig_of_austria"
+		texturefile = "gfx/leaders/AUS/Portrait_Austria_Hedwig_of_Austria.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_archduchess_of_austria"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Archduchess_Adelheid_of_Habsburg_Lorraine.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_franz_II"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Franz_II.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_LIE_franz_I"
+		texturefile = "gfx/leaders/LIE/Portrait_Liechtenstein_Franz_I.dds"
+	}
+}

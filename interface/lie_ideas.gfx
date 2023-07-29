@@ -1,0 +1,26 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_idea_lie_hre"
+		texturefile = "gfx/interface/ideas/idea_LIE_hre.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_lie_league_of_nations"
+		texturefile = "gfx/interface/ideas/idea_LIE_league_of_nations.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_lie_double_monarchy"
+		texturefile = "gfx/interface/ideas/idea_LIE_double_monarchy.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_lie_franz_I"
+		texturefile = "gfx/interface/ideas/idea_LIE_franz_I.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_lie_franz_josef_II"
+		texturefile = "gfx/interface/ideas/idea_LIE_franz_josef_II.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_lie_austria_hungary_formed"
+		texturefile = "gfx/interface/ideas/idea_LIE_austria_hungary_formed.dds"
+	}
+}

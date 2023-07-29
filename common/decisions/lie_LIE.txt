@@ -1,0 +1,110 @@
+LIE_formables_category = {
+
+	LIE_alpine_republic = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = LIE
+		}
+
+		available = {
+			is_subject = no
+			controls_state = 909
+			controls_state = 848
+			controls_state = 153
+			controls_state = 152
+			controls_state = 4
+			controls_state = 151
+			controls_state = 846
+			controls_state = 847
+			controls_state = 3
+			controls_state = 845
+		}
+
+		visible = {
+			original_tag = LIE
+			NOT = { has_global_flag = LIE_alpine_republic }
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = ALP_REP
+			848 = { add_core_of = LIE }
+			153 = { add_core_of = LIE }
+			152 = { add_core_of = LIE }
+			4 = { add_core_of = LIE }
+			151 = { add_core_of = LIE }
+			846 = { add_core_of = LIE }
+			847 = { add_core_of = LIE }
+			3 = { add_core_of = LIE }
+			845 = { add_core_of = LIE }
+			hidden_effect = {
+				#news_event = { id = wtt_news.58 hours = 6 }
+				set_global_flag = LIE_alpine_republic
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+LIE_integrate_puppets = {
+
+	LIE_integrate_habsburg_hungary = {
+
+		icon = GFX_decision_generic_tank
+
+		allowed = {
+			original_tag = LIE
+		}
+
+		cost = 50
+
+		available = {
+			LIE = {
+				has_completed_focus = LIE_orchestrate_a_coup_in_hungary
+			}
+			HUN = {
+				has_cosmetic_tag = HABS_HUN
+				is_subject_of = LIE
+			}
+		}
+
+		visible = {
+			original_tag = LIE
+			LIE = {
+				has_completed_focus = LIE_orchestrate_a_coup_in_hungary
+			}
+			NOT = { has_global_flag = LIE_integrated_hungary }
+		}
+
+		complete_effect = {
+			HUN = {
+				every_unit_leader = {
+					set_nationality = LIE
+				}
+			}
+			annex_country = { target = HUN transfer_troops = yes }
+			add_state_core = 155
+			add_state_core = 43
+			add_state_core = 154
+			hidden_effect = {
+            	set_global_flag = LIE_integrated_hungary
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
