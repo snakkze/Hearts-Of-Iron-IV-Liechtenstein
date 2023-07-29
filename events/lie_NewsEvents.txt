@@ -1,0 +1,267 @@
+add_namespace = news_lie
+
+# royale marriage
+news_event = {
+	id = news_lie.1
+	title = news_lie.1.t
+	desc = news_lie.1.d
+	picture = GFX_report_event_total_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = news_lie.1.a
+		trigger = {
+			NOT = {
+				original_tag = LIE
+				original_tag = HUN
+			}
+		}
+	}
+
+	option = {
+		name = news_lie.1.b
+		trigger = {
+			original_tag = LIE
+		}
+	}
+
+	option = {
+		name = news_lie.1.c
+		trigger = {
+			original_tag = HUN
+		}
+	}
+}
+
+# habsburg austria and czechia
+news_event = {
+	id = news_lie.2
+	title = news_lie.2.t
+	desc = news_lie.2.d
+	picture = GFX_news_event_generic_rally2
+
+	is_triggered_only = yes
+
+	option = {
+		name = news_lie.2.a
+		trigger = {
+			original_tag = AUS
+			original_tag = CZE
+		}
+	}
+	option = {
+		name = news_lie.2.b
+		trigger = {
+			original_tag = HUN
+		}
+	}
+
+	option = {
+		name = news_lie.2.c
+		trigger = {
+			original_tag = LIE
+		}
+	}
+
+	option = {
+		name = news_lie.2.e
+		trigger = {
+			NOT = {
+				original_tag = AUS
+				original_tag = CZE
+				original_tag = HUN
+				original_tag = LIE
+			}
+		}
+	}
+}
+
+# succesfull coup in hungary
+news_event = {
+	id = news_lie.3
+	title = news_lie.3.t
+	desc = news_lie.3.d
+	picture = GFX_news_event_saf_coup
+
+	is_triggered_only = yes
+
+	option = {
+		name = news_lie.3.a
+		trigger = {
+			original_tag = HUN
+		}
+	}
+
+	option = {
+		name = news_lie.3.b
+		trigger = {
+			original_tag = LIE
+		}
+	}
+
+	option = {
+		name = news_lie.3.c
+		trigger = {
+			NOT = {
+				original_tag = AUS
+				original_tag = CZE
+				original_tag = HUN
+				original_tag = LIE
+			}
+		}
+	}
+}
+
+# austria hungary formed
+news_event = {
+	id = news_lie.4
+	title = news_lie.4.t
+	desc = news_lie.4.d
+	picture = GFX_news_event_generic_parliament
+
+	is_triggered_only = yes
+
+	option = {
+		name = news_lie.4.a
+		trigger = {
+			original_tag = LIE
+		}
+	}
+
+	option = {
+		name = news_lie.4.b
+		trigger = {
+			not = {
+				original_tag = LIE
+			}
+		}
+	}
+}
+
+# hre formed
+news_event = {
+	id = news_lie.5
+	title = news_lie.5.t
+	desc = news_lie.5.d
+	picture = GFX_news_event_generic_parliament
+
+	is_triggered_only = yes
+
+	option = {
+		name = news_lie.5.a
+		trigger = {
+			original_tag = LIE
+		}
+	}
+
+	option = {
+		name = news_lie.5.b
+		trigger = {
+			not = {
+				original_tag = LIE
+			}
+		}
+	}
+}
+
+# Coup Attempt in Liechtenstein(success)
+news_event = {
+	id = news_lie.6
+	title = news_lie.6.t
+	desc = news_lie.6.d
+	picture = GFX_news_event_saf_coup
+
+	is_triggered_only = yes
+
+	option = {
+		name = news_lie.6.a
+		trigger = {
+			original_tag = LIE
+		}
+	}
+
+	option = {
+		name = news_lie.6.b
+		trigger = {
+			original_tag = GER
+		}
+	}
+
+	option = {
+		name = news_lie.6.c
+		trigger = {
+			not = {
+				original_tag = LIE
+			}
+		}
+	}
+}
+
+# Coup Attempt in Liechtenstein(fail josefII)
+news_event = {
+	id = news_lie.7
+	title = news_lie.7.t
+	desc = news_lie.7.d
+	picture = GFX_news_event_saf_coup
+
+	is_triggered_only = yes
+
+	option = {
+		name = news_lie.7.a
+		trigger = {
+			original_tag = LIE
+		}
+	}
+
+	option = {
+		name = news_lie.7.b
+		trigger = {
+			original_tag = GER
+		}
+	}
+
+	option = {
+		name = news_lie.7.c
+		trigger = {
+			not = {
+				original_tag = LIE
+				original_tag = GER
+			}
+		}
+	}
+}
+
+# Coup Attempt in Liechtenstein(fail gutmann)
+news_event = {
+	id = news_lie.8
+	title = news_lie.8.t
+	desc = news_lie.8.d
+	picture = GFX_news_event_saf_coup
+
+	is_triggered_only = yes
+
+	option = {
+		name = news_lie.8.a
+		trigger = {
+			original_tag = LIE
+		}
+	}
+
+	option = {
+		name = news_lie.8.b
+		trigger = {
+			original_tag = GER
+		}
+	}
+
+	option = {
+		name = news_lie.8.c
+		trigger = {
+			not = {
+				original_tag = LIE
+				original_tag = GER
+			}
+		}
+	}
+}

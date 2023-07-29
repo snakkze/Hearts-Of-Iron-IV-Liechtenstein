@@ -1,0 +1,129 @@
+﻿l_english:
+  lie_LIE.1.t:0 "Established Ties"
+  lie_LIE.1.d:0 "Since we recognized our Habsburg heritage, we have been searching for potential Habsburg descendants whom we can install as the head of our small state to lay claim to territories that were once under Habsburg rule long ago. Finally, we have managed to establish ties with two Habsburgs, Otto von Habsburg and his sister, Archduchess Adelheid of Habsburg-Lorraine. If we can garner enough support for monarchy in our country, we plan to appoint the Archduchess of Habsburg-Lorraine as our head of state through a marriage arrangement. Subsequently, we aim to exert influence over a Habsburg-led Hungary under the rule of Otto von Habsburg, creating a puppet state."
+  lie_LIE.1.a:0 "Great!"
+
+  lie_LIE.2.t:0 "Cutted Swiss Ties"
+  lie_LIE.2.d:0 "We had to open our eyes. Over the past 10 years, our economy has been slowing down ever since we adopted the Swiss franc as our currency. Each day, the value of our currency has been depreciating, making it more and more worthless. It's time to break away from our close ties with Switzerland and undertake currency reform to achieve greater independence."
+  lie_LIE.2.a:0 "It's time to reform our currency!"
+
+  lie_LIE.3.t:0 "Currency Reformed"
+  lie_LIE.3.d:0 "It's a remarkable achievement! Our currency reform has worked wonders, making our currency stronger than its peers. This progress has brought us closer to achieving our dream of a more independent nation and has fueled our aspirations of creating a powerful empire with Vaduz as its center in Europe."
+  lie_LIE.3.a:0 "So wie Gott wollte!"
+
+  lie_LIE.4.t:0 "Liechtenstein-Hungary Formed"
+  lie_LIE.4.d:0 "Following our successful coup in Hungary, we have expanded our country's territory to encompass all parts of the former Austro-Hungarian Empire. Now, Liechtenstein-Hungary proudly takes on the role of a Habsburg empire in Europe, with Vaduz as its seat of power."
+  lie_LIE.4.a:0 "Regnum Mariae, Patrona Liechtenstein-Hungariae"
+
+  lie_LIE.5.t:0 "Liechtenstein offers Guarantee"
+  lie_LIE.5.d:0 "After the recent events in the former Austro-Hungarian sphere, Liechtenstein has made an intriguing offer. They are willing to provide us with a guarantee of protection if we allow them to occupy our country and give up our independence. In return, we would become a part of their strong empire, which offers the promise of security and protection from potential German invasion. The decision lies before us, and we must carefully weigh the implications of this proposal for the future of our nation."
+  lie_LIE.5.a:0 "We shall accept this offer to be safe from Germany."
+  lie_LIE.5.b:0 "We will never give up our independence!"
+
+  lie_LIE.6.t:0 "Bohemia Accepts."
+  lie_LIE.6.d:0 "The Habsburg-led Bohemian Kingdom has accepted our offer of guarantee, leading them to give up their independence. This strategic agreement has proven highly beneficial, as our empire has now grown stronger without the need for war. The addition of this new territory adds to our influence and stability, and we look forward to the prosperous future that lies ahead."
+  lie_LIE.6.a:0 "Great!"
+
+  lie_LIE.7.t:0 "Bohemia Refuses!"
+  lie_LIE.7.d:0 "The Habsburg-led Bohemian Kingdom's refusal to accept our offer for guarantee and give up their independence is a blow to our Habsburg-led empire. We will not take this slight lightly, and war may be the path we must take to defend our honor and strengthen our dominion. With careful planning and unwavering resolve, we shall seek revenge on the Kingdom of Bohemia for their defiance and assert our authority in the region."
+  lie_LIE.7.a:0 "They will regret that!"
+
+  lie_LIE.8.t:0 "Royale Dictatorship"
+  lie_LIE.8.d:0 "Following the examples set in Germany and Italy, we have decided to transform our country into a fascist state. Henceforth, our King will wield absolute authority, and any elections, if held, will be heavily manipulated to ensure the King's party receives 100 percent of the votes."
+  lie_LIE.8.a:0 "Excellent"
+
+  lie_LIE.9.t:0 "Anschluss of Austria"
+  lie_LIE.9.d:0 "Following the recent Anschluss of Austria, our King has decided to step down from his role as the country's leader and pass the reins to his grandson, Franz Josef II. of Liechtenstein."
+  lie_LIE.9.a:0 "Glory to Franz Josef II!"
+
+  lie_LIE.10.t:0 "Death of Franz I."
+  lie_LIE.10.d:0 "Today, we mourn the passing of Franz I. of Liechtenstein. His death has shocked our nation, as he was our beloved king. As of now, the official King of Liechtenstein is his grandson, Franz Josef II. of Liechtenstein."
+  lie_LIE.10.a:0 "He will always be remembered..."
+
+  lie_LIE.11.t:0 "Monarchy Abolished"
+  lie_LIE.11.d:0 "In light of recent events, which have shown a growing desire for democracy, we have decided to heed the wishes of the people and abolish our monarchy, creating a democratic system in our country."
+  lie_LIE.11.a:0 "The Conservatives should rule!"
+  lie_LIE.11.b:0 "The Liberals should rule!"
+
+  lie_LIE.12.t:0 "Liechtenstein asks for Investments"
+  lie_LIE.12.d:0 "[FROM.GetNameDefCap] is asking for our support in order to withstand the fascist powers knocking at their doors. We can invest in their economy, this way they can be prepared for the worst, or even help fight Fascism directly if they choose, or are forced to break their longstanding neutrality."
+  lie_LIE.12.a:0 "Invest in the Aspiring Democracy!"
+  lie_LIE.12.b:0 "They arent worth it!"
+
+  lie_LIE.13.t:0 "USA invest into Liechtenstein"
+  lie_LIE.13.d:0 "These investments will help us improve our economy, and allow us to resist any hardships that fascism may cause upon us. They will also bring our nations closer together, maybe even in direct opposition to Fascism eventually."
+  lie_LIE.13.a:0 "Great!"
+
+  lie_LIE.14.t:0 "USA declines investing into Liechtenstein"
+  lie_LIE.14.d:0 "Unfortunately, we have been informed that [FROM.GetName] will not be investing in the [ROOT.GetAdjective] economy. We stand more isolated that we would want to be, considering the impending danger of Fascism."
+  lie_LIE.14.a:0 "Scheisse!"
+
+  lie_LIE.15.t:0 "Liechtenstein asks for Guarantee"
+  lie_LIE.15.d:0 "[FROM.GetNameDefCap] is asking for our support in order to withstand the fascist powers knocking at their doors. We can guarantee their country, this way we can help them in case that a fascist power will invade them."
+  lie_LIE.15.a:0 "Of course!"
+  lie_LIE.15.b:0 "Decline that outrages question!"
+
+  lie_LIE.16.t:0 "[FROM.GetName] accepts our Guarantee request"
+  lie_LIE.16.d:0 "[From.GetNameDefCap] has accepted our request to guarantee our country's protection from fascist countries around us. This is excellent news and provides a sense of security for our people in case of war."
+  lie_LIE.16.a:0 "Brilliant"
+
+  lie_LIE.17.t:0 "[FROM.GetName] denies our Guarantee request"
+  lie_LIE.17.d:0 "[From.GetNameDefCap] has denied our request to guarantee our country's protection from fascist countries around us. This is very outrageous for our aspiring democracy, but unfortunately, we cannot do anything about it."
+  lie_LIE.17.a:0 "I thought Democracies were supposed to Help?"
+
+  lie_LIE.18.t:0 "Swiss Ultimatum"
+  lie_LIE.18.d:0 "In response to the recent events, Switzerland has issued us an ultimatum. They demand that we ensure our full independence and comply with the applicable state treaties they have provided us. This ultimatum has sparked a heated debate in our parliament, but eventually all parties have agreed to rewrite parts of our constitution and reform our government."
+  lie_LIE.18.a:0 "We have to reform our Government"
+
+  lie_LIE.19.t:0 "Exile the Jewish Princess?"
+  lie_LIE.19.d:0 "Following the recent increase in fascist support in Liechtenstein, we must consider the opportunity to exile our Princess Elisabeth von Gutmann to secure her safety and maintain stability in our country."
+  lie_LIE.19.a:0 "Sending her into Exile is the best for us all."
+  lie_LIE.19.b:0 "She is the Princess, she can't be exiled!"
+
+  lie_LIE.20.t:0 "Liechtenstein demands Referendum!"
+  lie_LIE.20.d:0 "Liechtenstein has demanded a referendum to unite with the Swiss people, aiming to reunite the Holy Roman Empire. These ambitions sound intriguing, but it would require giving up our independence to be part of the new Holy Roman Empire."
+  lie_LIE.20.a:0 "Imperial Ambitiouns? Okay."
+  lie_LIE.20.b:0 "The small Liechtenstein? Of course not!"
+
+  lie_LIE.21.t:0 "Switzerland Accepts"
+  lie_LIE.21.d:0 "Following our referendum in Switzerland, their Government has agreed to become part of our great country. This is a significant step for us and makes our goal of forming the new Holy Roman Empire more realistic than ever!"
+  lie_LIE.21.a:0 "Wunderbar!"
+
+  lie_LIE.22.t:0 "Liechtenstein demands Referendum!"
+  lie_LIE.22.d:0 "Liechtenstein has demanded a referendum to unite with the Austrian people, aspiring to reunite the Holy Roman Empire. These ambitions are fascinating, but it would necessitate giving up our independence to be part of the new Holy Roman Empire."
+  lie_LIE.22.a:0 "Rather Liechtenstein than Germany"
+  lie_LIE.22.b:0 "The small Liechtenstein? Of course not!"
+
+  lie_LIE.23.t:0 "Austria Accepts"
+  lie_LIE.23.d:0 "Following our referendum in Austria, their Government has agreed to become part of our great country. This is a momentous achievement, bringing us closer to realizing our vision of the new Holy Roman Empire!"
+  lie_LIE.23.a:0 "Great!"
+
+  lie_LIE.24.t:0 "Austria Refuses"
+  lie_LIE.24.d:0 "Following our referendum in Austria, their Government has declined to join our great country. This is an outrageous setback for us, and we may have to confront them in order to advance with our grand plans!"
+  lie_LIE.24.a:0 "They will regret that!"
+
+  lie_LIE.25.t:0 "Holy Roman Empire Formed"
+  lie_LIE.25.d:0 "Following our annexation of Switzerland and Austria, we have expanded our territory and proudly revived the Holy Roman Empire."
+  lie_LIE.25.a:0 "Long Live the New Holy Roman Empire!"
+
+  lie_LIE.26.t:0 "Coup in Liechtenstein"
+  lie_LIE.26.d:0 "Today, a coup in Liechtenstein has shocked our country. Members of the SS and followers of the German Movement in Liechtenstein are marching through our streets, causing unrest with their "Anschlussputsch." We must now decide whether to send the police to address this outrageous action or hope that nothing further will occur."
+  lie_LIE.26.a:0 "Send the Police to stop them!"
+  lie_LIE.26.b:0 "Ignore them. Its not worth it."
+
+  lie_LIE.27.t:0 "Police send to stop the Coup"
+  lie_LIE.27.d:0 "In response to the recent coup attempt, we have deployed the police, successfully apprehending 76 out of the 100 coup participants."
+  lie_LIE.27.a:0 "Arrest them!"
+
+  lie_LIE.28.t:0 "Ignored the Coup"
+  lie_LIE.28.d:0 "Regrettably, we chose to ignore the coup attempt, and it ended disastrously. The participants marched to the parliament, assassinating King Franz Josef II. before the royal guard could intervene. Luckily, the royal guard managed to successfully neutralize most of the participants, forcing the rest to flee. Now, our throne is vacant, and we have only one successor, the Jewish Princess Elizabeth von Gutmann."
+  lie_LIE.28.a:0 "Long live the Jewis Princess?"
+
+  lie_LIE.29.t:0 "Ignored the Coup"
+  lie_LIE.29.d:0 "Regrettably, we chose to ignore the coup attempt, and it ended disastrously. The participants marched to the parliament, assassinating King Franz Josef II. before the royal guard could intervene. Tragically, the coup participants also managed to neutralize the royal guard, leading to Alfons Goop becoming the dictator of Liechtenstein."
+  lie_LIE.29.a:0 "How Awful!"
+
+  lie_LIE.30.t:0 "German sends Ultimatum!"
+  lie_LIE.30.d:0 "Today, we received an ultimatum from Germany, demanding the release of German prisoners who attempted a coup in Liechtenstein. If we refuse, we must be prepared for the possibility of invasion. Yet, if we accept this ultimatum, it may portray us as a mere puppet of Germany, unable to assert our independence to the rest of Europe."
+  lie_LIE.30.a:0 "We have to back off. They are too strong."
+  lie_LIE.30.b:0 "They did a coup! They deserve to be imprisoned."

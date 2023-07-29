@@ -1,0 +1,2567 @@
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+
+#!gfx:interface\lie_focuses.gfx
+
+focus_tree = {
+	id = liechtenstein_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = LIE
+		}
+	}
+	
+	continuous_focus_position = { x = 3012 y = 565 }
+	
+	default = no
+	
+	focus = {
+		id = LIE_deny_our_heritage
+		icon = GFX_focus_rom_handle_king		
+		mutually_exclusive = {
+			focus = LIE_reclaim_the_imperial_heritage
+		}
+		x = 3
+		y = 0
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = LIE_international_neutrality
+		icon = GFX_goal_generic_neutrality_focus			
+		prerequisite = { focus = LIE_deny_our_heritage }
+		mutually_exclusive = {
+			focus = LIE_international_intervention
+		}
+		x = 2
+		y = 1
+		relative_position_id = LIE_deny_our_heritage
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.15
+		}
+	}
+
+	focus = {
+		id = LIE_international_intervention
+		icon = GFX_goal_generic_political_pressure		
+		prerequisite = { focus = LIE_deny_our_heritage }
+		mutually_exclusive = {
+			focus = LIE_international_neutrality
+		}
+		x = -2
+		y = 1
+		relative_position_id = LIE_deny_our_heritage
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			if = {
+				limit = {
+					LIE = {
+						has_idea = LIE_idea_neutrality
+					}
+				}
+				remove_ideas = {
+					LIE_idea_neutrality
+				}
+				add_stability = -0.15
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_bruder_im_norden
+		icon = GFX_goal_support_fascism		
+		prerequisite = { focus = LIE_international_intervention }
+		mutually_exclusive = {
+			focus = LIE_appoint_western_goverment
+		}
+		x = -4
+		y = 1
+		relative_position_id = LIE_international_intervention
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			LIE = {
+				add_timed_idea = { idea = LIE_german_propaganda_influence days = 356 }
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_abandon_the_franc
+		icon = GFX_focus_LIE_abandon_the_swiss_franc		
+		prerequisite = { focus = LIE_bruder_im_norden }
+		available = {
+			fascism > 0.15
+		}
+		x = -1
+		y = 1
+		relative_position_id = LIE_bruder_im_norden
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			LIE = { country_event = { id = lie_LIE.2 } }
+		}
+	}
+
+	focus = {
+		id = LIE_spread_german_propaganda
+		icon = GFX_focus_generic_fascist_propaganda		
+		prerequisite = { focus = LIE_bruder_im_norden }
+		available = {
+			fascism > 0.15
+		}
+		x = 1
+		y = 1
+		relative_position_id = LIE_bruder_im_norden
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			GER = {
+				add_opinion_modifier = { target = LIE modifier = large_increase }
+			}
+			
+			LIE = {
+				add_timed_idea = { idea = LIE_german_propaganda_influence days = 356 }
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_adopt_the_reichsmarkt
+		icon = GFX_focus_adopt_the_reichsmark		
+		prerequisite = { focus = LIE_abandon_the_franc }
+		prerequisite = { focus = LIE_spread_german_propaganda }
+		available = {
+			has_opinion = {
+				target = GER
+				value > 49
+			}
+			OR = {
+				fascism > 0.25
+				has_government = fascism
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = LIE_abandon_the_franc
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			LIE = {
+				add_timed_idea = { idea = LIE_adopted_reichsmark days = 356 }
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_join_the_axis
+		icon = GFX_focus_generic_spread_fascism		
+		prerequisite = { focus = LIE_royale_dictatorship }	
+		prerequisite = { focus = LIE_adopt_the_reichsmarkt }
+		#prerequisite = { focus = LIE_spread_german_propaganda }
+		available = {
+			OR = {
+				has_opinion = {
+					target = GER
+					value > 74
+				}
+				AND = {
+					fascism > 0.35
+					has_government = fascism
+				}
+			}	
+		}
+		bypass = {
+			is_in_faction_with = GER
+		}
+		x = 1
+		y = 1
+		#relative_position_id = LIE_spread_german_propaganda
+		relative_position_id = LIE_adopt_the_reichsmarkt
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			GER = {
+				country_event = { id = generic.2 hours = 4 }
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_royale_dictatorship
+		icon = GFX_focus_generic_monarchy_1		
+		#prerequisite = { focus = LIE_join_the_axis }	
+		#prerequisite = { focus = LIE_adopt_the_reichsmarkt }
+		prerequisite = { focus = LIE_spread_german_propaganda }
+		available = {
+			fascism > 0.25
+		}
+		x = 1
+		y = 1
+		#relative_position_id = LIE_adopt_the_reichsmarkt
+		relative_position_id = LIE_spread_german_propaganda
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			LIE = { country_event = { id = lie_LIE.8 } }
+		}
+	}
+
+	focus = {
+		id = LIE_claim_eastern_swiss_alps
+		icon = GFX_focus_attack_switzerland		
+		prerequisite = { focus = LIE_join_the_axis }	
+		x = 0
+		y = 1
+		relative_position_id = LIE_join_the_axis
+		cost = 10
+		will_lead_to_war_with = AUS
+		ai_will_do = {
+			factor = 70
+			modifier = {
+				factor = 0.5
+				SWI = { is_in_faction = yes }
+			}
+		}
+		available = {
+			151 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			random_country = {
+				limit = {
+					owns_state = 151
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 151 846 }
+					}
+				}
+			}
+			add_state_core = 151
+			add_state_core = 846
+		}
+	}
+
+	focus = {
+		id = LIE_appoint_western_goverment
+		icon = GFX_goal_support_democracy		
+		prerequisite = { focus = LIE_international_intervention focus = LIE_international_neutrality }
+		mutually_exclusive = {
+			focus = LIE_bruder_im_norden
+			focus = LIE_answer_swiss_ultimatum
+		}
+		x = 2
+		y = 1
+		relative_position_id = LIE_international_intervention
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			LIE = {
+				add_timed_idea = { idea = LIE_idea_democratic_influence days = 356 }
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_seek_defence_in_the_west
+		icon = GFX_goal_generic_defence		
+		prerequisite = { focus = LIE_appoint_western_goverment }
+		bypass = {
+			is_in_faction_with = ENG
+		}
+		x = -1
+		y = 1
+		relative_position_id = LIE_appoint_western_goverment
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					is_major = yes
+					is_subject = no
+					has_government = democratic
+				}
+				country_event = { id = lie_LIE.15 }
+			}	
+			custom_effect_tooltip = if_they_accept
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						is_major = yes
+						is_subject = no
+						has_government = democratic
+					}
+					give_guarantee = LIE
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_western_investments
+		icon = GFX_focus_usa_guarantee_the_american_dream		
+		prerequisite = { focus = LIE_appoint_western_goverment }
+		available = {
+			USA = {
+				exists = yes 
+				NOT = { has_government = fascism }
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		bypass = {
+			USA = {
+				OR = {
+					has_government = fascism 
+					exists = no 
+					has_war_with = ROOT	
+				}
+			}
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		x = 1
+		y = 1
+		relative_position_id = LIE_appoint_western_goverment
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic 
+				popularity = 0.05
+			}
+			USA = {
+				country_event = { id = lie_LIE.12 hours = 4 }
+			}
+			custom_effect_tooltip = if_they_accept
+			effect_tooltip = {
+				LIE = {
+					add_timed_idea = {
+						idea = LIE_foreign_investments_idea
+						days = 730
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_abolish_the_monarchy
+		icon = GFX_focus_rom_abdicate		
+		prerequisite = { focus = LIE_western_investments }
+		prerequisite = { focus = LIE_seek_defence_in_the_west }
+		available = {
+			AND = {
+				democratic > 0.5
+				has_government = democratic
+			}
+		}
+		x = -1
+		y = 1
+		relative_position_id = LIE_western_investments
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			LIE = { country_event = { id = lie_LIE.11 } }
+		}
+	}
+
+	focus = {
+		id = LIE_join_the_allies
+		icon = GFX_goal_generic_major_alliance		
+		prerequisite = { focus = LIE_abolish_the_monarchy }
+		available = {
+			AND = {
+				democratic > 0.65
+				has_government = democratic
+			}
+		}
+		bypass = {
+			is_in_faction_with = ENG
+		}
+		x = -1
+		y = 1
+		relative_position_id = LIE_abolish_the_monarchy
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			if = {
+				limit = {
+					ENG = {
+						has_government = democratic
+						is_faction_leader = yes 
+					}
+				}
+				ENG = {
+					country_event = {
+						id = generic.2
+						hours = 3
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					any_other_country = {
+						is_suitable_democratic_major = yes
+						is_faction_leader = yes
+					}
+				}
+
+				random_other_country = {
+					limit = {
+						is_suitable_democratic_major = yes
+						is_faction_leader = yes
+					}
+					country_event = {
+						id = generic.2
+						hours = 3
+					}
+				}
+
+			}
+			else = {
+				random_other_country = {
+					limit = {
+						is_faction_leader = yes
+						has_government = democratic
+					}
+
+					country_event = {
+						id = generic.2
+						hours = 3
+					}
+				}
+			}	
+		}
+	}
+
+	focus = {
+		id = LIE_join_the_un
+		icon = GFX_focus_generic_league_of_nations		
+		prerequisite = { focus = LIE_abolish_the_monarchy }
+		available = {
+			has_government = democratic
+		}
+		x = 1
+		y = 1
+		relative_position_id = LIE_abolish_the_monarchy
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			LIE = {
+				hidden_effect = {
+					add_ideas = league_of_nations_member_idea
+				}
+				add_ideas = LIE_league_of_nations_member
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_fuel_of_democracy
+		icon = GFX_goal_generic_oil_refinery		
+		prerequisite = { focus = LIE_join_the_allies }	
+		prerequisite = { focus = LIE_join_the_un }
+		x = 1
+		y = 1
+		relative_position_id = LIE_join_the_allies
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_resource = {
+					type = oil
+					amount = 2
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_answer_swiss_ultimatum
+		icon = GFX_goal_generic_forceful_treaty		
+		prerequisite = { focus = LIE_international_neutrality }
+		mutually_exclusive = {
+			focus = LIE_appoint_western_goverment
+		}
+		x = 4
+		y = 1
+		relative_position_id = LIE_international_neutrality
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			LIE = { country_event = { id = lie_LIE.18 } }
+		}
+	}
+
+	focus = {
+		id = LIE_ideological_defense
+		icon = GFX_goal_continuous_def_against_influence		
+		prerequisite = { focus = LIE_answer_swiss_ultimatum }
+		x = -1
+		y = 1
+		relative_position_id = LIE_answer_swiss_ultimatum
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_timed_idea = { idea = LIE_idea_ideological_defense days = 356 }
+		}
+	}
+
+	focus = {
+		id = LIE_fortify_vaduz
+		icon = GFX_goal_generic_fortify_city		
+		prerequisite = { focus = LIE_answer_swiss_ultimatum }
+		available = {
+			909 = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+			is_subject = no
+		}
+		x = 1
+		y = 1
+		relative_position_id = LIE_answer_swiss_ultimatum
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			909 = {
+				add_building_construction = {
+					type = bunker
+					province = 13257
+					level = 3
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_the_anschluss
+		icon = GFX_focus_LIE_the_anschluss
+		prerequisite = { focus = LIE_ideological_defense }
+		prerequisite = { focus = LIE_fortify_vaduz }
+		available = {
+			GER = {
+				has_completed_focus = GER_anschluss
+				controls_state = 848
+				controls_state = 153
+				controls_state = 152
+				controls_state = 4
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = LIE_ideological_defense
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			LIE = { country_event = { id = lie_LIE.9 } }
+			hidden_effect = {
+				# 18 days
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_castle_of_vaduz
+		icon = GFX_focus_LIE_castle_of_vaduz
+		prerequisite = { focus = LIE_the_anschluss }
+		available = {
+			909 = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = LIE_the_anschluss
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH  }
+		completion_reward = {
+			# By bringing our arts back to vaduz we cultivate our people
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = LIE_train_militias
+		icon = GFX_goal_generic_military_sphere		
+		prerequisite = { focus = LIE_the_anschluss }
+		available = {
+			capital_scope = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		available_if_capitulated = no
+		x = -2
+		y = 1
+		relative_position_id = LIE_the_anschluss
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			hidden_effect = {
+				division_template = {
+					name = "Liechtensteiner Milizen"
+					priority = 1
+					division_names_group = GER_INF_01
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+						militia = { x = 1 y = 2 }
+					}
+					support = {
+						recon = { x = 0 y = 0 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Liechtensteiner Milizen\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = LIE
+						prioritize_location = 13257
+					}
+					create_unit = {
+						division = "division_template = \"Liechtensteiner Milizen\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = LIE
+						prioritize_location = 13257
+					}
+				}
+			}
+			custom_effect_tooltip = lie_militias
+		}
+	}
+
+	focus = {
+		id = LIE_exile_elisabeth_von_gutmann
+		icon = GFX_focus_LIE_exile_the_jewish_princess		
+		prerequisite = { focus = LIE_the_anschluss }
+		x = 2
+		y = 1
+		relative_position_id = LIE_the_anschluss
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+		completion_reward = {
+			LIE = { country_event = { id = lie_LIE.19 } }
+		}
+	}
+
+	#focus = {
+	#	id = LIE_accept_war_refugees
+	#	icon = GFX_goal_unknown		
+	#	prerequisite = { focus = LIE_train_militias }
+	#	prerequisite = { focus = LIE_castle_of_vaduz }
+	#	prerequisite = { focus = LIE_exile_elisabeth_von_gutmann }
+	#	x = -1
+	#	y = 1
+	#	relative_position_id = LIE_castle_of_vaduz
+	#	cost = 10
+	#	ai_will_do = {
+	#		factor = 12
+	#	}
+	#	search_filters = { FOCUS_FILTER_POLITICAL  }
+	#	completion_reward = {
+	#
+	#	}
+	#}
+
+
+	focus = {
+		id = LIE_economic_boom_of_ww2
+		icon = GFX_focus_mex_privatisation		
+		prerequisite = { focus = LIE_train_militias }
+		prerequisite = { focus = LIE_castle_of_vaduz }
+		prerequisite = { focus = LIE_exile_elisabeth_von_gutmann }
+		available = {
+			AND = {
+				SWI = {
+					OR = {
+						has_completed_focus = SWI_allied_gold
+						has_completed_focus = SWI_axis_gold
+					}
+				}
+				GER = { has_government = fascism }
+				GER = { has_offensive_war_with = POL }
+				GER = { has_offensive_war_with = ENG }
+				GER = { has_offensive_war_with = FRA }
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = LIE_castle_of_vaduz
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_ideas = LIE_idea_economic_boom
+		}
+	}
+
+	focus = {
+		id = LIE_reclaim_the_imperial_heritage
+		icon = GFX_focus_generic_home_defense		
+		mutually_exclusive = {
+			focus = LIE_deny_our_heritage
+		}
+		x = 18
+		y = 0
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.05
+			if = {
+				limit = {
+					LIE = {
+						has_idea = LIE_idea_neutrality
+					}
+				}
+				remove_ideas = {
+					LIE_idea_neutrality
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_cultivate_the_people
+		icon = GFX_focus_research		
+		x = 13
+		y = 0
+		relative_position_id = LIE_reclaim_the_imperial_heritage
+		cost = 10
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = LIE_industrial_foundation
+		icon = GFX_goal_generic_production		
+		x = 10
+		y = 0
+		relative_position_id = LIE_reclaim_the_imperial_heritage
+		cost = 10
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_tech_bonus = {
+				name = LIE_industrial_foundation
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_remilitarize_the_country
+		icon = GFX_goal_rhineland		
+		available_if_capitulated = no
+		x = 6
+		y = 0
+		relative_position_id = LIE_industrial_foundation
+		cost = 10
+		ai_will_do = {
+			factor = -100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_tech_bonus = {
+				name = LIE_industrial_foundation
+				bonus = 1.0
+				uses = 1		
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_mobilize_our_economy
+		icon = GFX_focus_generic_tank_production	
+		prerequisite = { focus = LIE_remilitarize_the_country }	
+		x = -2
+		y = 1
+		relative_position_id = LIE_remilitarize_the_country
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			upgrade_economy_law = yes
+		}
+	}
+
+	focus = {
+		id = LIE_militarize_the_police
+		icon = GFX_goal_generic_small_arms	
+		prerequisite = { focus = LIE_remilitarize_the_country }	
+		available = {
+			capital_scope = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		available_if_capitulated = no
+		x = 0
+		y = 1
+		relative_position_id = LIE_remilitarize_the_country
+		cost = 10
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			hidden_effect = {
+				division_template = {
+					name = "Bewaffnete Landespolizei"
+					priority = 1
+					division_names_group = GER_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						cavalry = { x = 0 y = 1 }
+					}
+					support = {
+						military_police = { x = 0 y = 0 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Bewaffnete Landespolizei\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = LIE
+						prioritize_location = 13257
+					}
+					create_unit = {
+						division = "division_template = \"Bewaffnete Landespolizei\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = LIE
+						prioritize_location = 13257
+					}
+				}
+			}
+			custom_effect_tooltip = lie_landespolizei
+			add_field_marshal_role = {
+                character = LIE_hermann_meier
+                traits = { old_guard }
+                skill = 1
+                attack_skill = 1
+                defense_skill = 2
+                planning_skill = 1
+                logistics_skill = 1
+            }
+			add_corps_commander_role = {
+                character = LIE_josef_brunhart
+                traits = { }
+                skill = 1
+                attack_skill = 1
+                defense_skill = 1
+                planning_skill = 1
+                logistics_skill = 1
+            }
+		}
+	}
+
+	focus = {
+		id = LIE_modernize_the_army
+		icon = GFX_goal_generic_army_motorized	
+		prerequisite = { focus = LIE_militarize_the_police }	
+		prerequisite = { focus = LIE_mobilize_our_economy }		
+		available_if_capitulated = no
+		x = -1
+		y = 1
+		relative_position_id = LIE_militarize_the_police
+		cost = 10
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = LIE_infantery_bonus
+				bonus = 2.0
+				uses = 1
+				category = infantry_weapons
+			}
+			
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 2.0
+				uses = 1
+				technology = motorised_infantry
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_militarize_the_youth
+		icon = GFX_focus_generic_military_academy	
+		prerequisite = { focus = LIE_remilitarize_the_country }	
+		available_if_capitulated = no
+		x = 2
+		y = 1
+		relative_position_id = LIE_remilitarize_the_country
+		cost = 10
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = military_youth_focus
+		}
+	}
+
+	focus = {
+		id = LIE_increased_conscriptions
+		icon = GFX_focus_generic_military_mission	
+		prerequisite = { focus = LIE_militarize_the_youth }	
+		prerequisite = { focus = LIE_militarize_the_police }
+		available_if_capitulated = no
+		x = -1
+		y = 1
+		relative_position_id = LIE_militarize_the_youth
+		cost = 10
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = LIE_increased_conscriptions
+		}
+	}
+
+	focus = {
+		id = LIE_fund_the_industry
+		icon = GFX_goal_generic_construct_civ_factory	
+		prerequisite = { focus = LIE_industrial_foundation }	
+		available = {
+			any_state = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		available_if_capitulated = no
+		x = -2
+		y = 1
+		relative_position_id = LIE_industrial_foundation
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}	
+		}
+	}
+
+	focus = {
+		id = LIE_expand_the_civilian_infrastructure
+		icon = GFX_goal_generic_construct_civilian	
+		prerequisite = { focus = LIE_fund_the_industry }
+		prerequisite = { focus = LIE_fund_infrastructure }	
+		available = {
+			any_state = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		available_if_capitulated = no
+		x = 1
+		y = 1
+		relative_position_id = LIE_fund_the_industry
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}	
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_fund_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure	
+		prerequisite = { focus = LIE_industrial_foundation }	
+		available = {
+			any_state = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		available_if_capitulated = no
+		x = 0
+		y = 1
+		relative_position_id = LIE_industrial_foundation
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_airport_of_liechtenstein
+		icon = GFX_goal_generic_build_airforce
+		prerequisite = { focus = LIE_fund_infrastructure }	
+		prerequisite = { focus = LIE_fund_the_military_industry }	
+		available = {
+			capital_scope = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		available_if_capitulated = no
+		x = 1
+		y = 1
+		relative_position_id = LIE_fund_infrastructure
+		cost = 10
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}	
+			capital_scope = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_equipment_to_stockpile = { 
+				type = transport_plane_equipment
+				amount = 10 
+				producer = ROOT
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_CAS_effort
+		icon = GFX_goal_generic_air_fighter2
+		prerequisite = { focus = LIE_airport_of_liechtenstein }
+		mutually_exclusive = { focus = LIE_fighter_effort }
+		available_if_capitulated = no
+		x = 1
+		y = 1
+		relative_position_id = LIE_airport_of_liechtenstein
+		cost = 5
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = CAS_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = cas_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_fighter_effort
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = LIE_airport_of_liechtenstein }
+		mutually_exclusive = { focus = LIE_CAS_effort }
+		available_if_capitulated = no
+		x = -1
+		y = 1
+		relative_position_id = LIE_airport_of_liechtenstein
+		cost = 5
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 1.0
+				uses = 2
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_fund_the_military_industry
+		icon = GFX_goal_generic_construct_mil_factory	
+		prerequisite = { focus = LIE_industrial_foundation }	
+		available = {
+			any_state = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		available_if_capitulated = no
+		x = 2
+		y = 1
+		relative_position_id = LIE_industrial_foundation
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_expand_the_military_industry
+		icon = GFX_goal_generic_construct_mil_factory	
+		prerequisite = { focus = LIE_fund_the_military_industry }	
+		prerequisite = { focus = LIE_mobilize_our_economy }	
+		available = {
+			any_state = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		available_if_capitulated = no
+		x = 1
+		y = 1
+		relative_position_id = LIE_fund_the_military_industry
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			army_experience = 10
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_tank_effort
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = LIE_expand_the_military_industry }
+		prerequisite = { focus = LIE_modernize_the_army }
+		bypass = { has_tech = motorised_infantry }
+		x = 1
+		y = 1
+		relative_position_id = LIE_expand_the_military_industry
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = LIE_tank_bonus
+				bonus = 3.0
+				technology = basic_light_tank
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_recognize_the_habsburg_heritage
+		icon = GFX_focus_LIE_recognize_habsburg_heritage
+		prerequisite = { focus = LIE_reclaim_the_imperial_heritage }
+		mutually_exclusive = {
+			focus = LIE_our_claim_of_the_hre
+		}
+		x = -4
+		y = 1
+		relative_position_id = LIE_reclaim_the_imperial_heritage
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.15
+			}
+			add_war_support = 0.15
+		}
+	}
+
+	focus = {
+		id = LIE_establish_dynastic_ties
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties	
+		prerequisite = { focus = LIE_recognize_the_habsburg_heritage }
+		x = -1
+		y = 1
+		relative_position_id = LIE_recognize_the_habsburg_heritage
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			# event for inviting otto von habsburg
+			LIE = { country_event = { id = lie_LIE.1 } }
+		}
+	}
+
+	focus = {
+		id = LIE_cut_swiss_ties
+		icon = GFX_focus_renounce_the_treaty_of_trianon		
+		prerequisite = { focus = LIE_recognize_the_habsburg_heritage }
+		x = 1
+		y = 1
+		relative_position_id = LIE_recognize_the_habsburg_heritage
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			# decrease relation with switzerland
+			LIE = { country_event = { id = lie_LIE.2 } }
+		}
+	}
+
+	focus = {
+		id = LIE_currency_reform
+		icon = GFX_focus_usa_reestablish_the_gold_standard		
+		prerequisite = { focus = LIE_cut_swiss_ties }
+		x = 1
+		y = 1
+		relative_position_id = LIE_cut_swiss_ties
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			# idea reformed currency + consumergoods and stability
+			LIE = { country_event = { id = lie_LIE.3 } }
+		}
+	}
+
+	focus = {
+		id = LIE_habsburg_alliance
+		icon = GFX_focus_LIE_habsburg_alliance		
+		prerequisite = { focus = LIE_currency_reform }		
+		prerequisite = { focus = LIE_invite_the_habsburg }
+		mutually_exclusive = {
+			focus = LIE_our_way_to_a_greater_liechtenstein
+		}
+		x = -1
+		y = 1
+		relative_position_id = LIE_currency_reform
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			# dobble monarchy idea
+			add_ideas = LIE_double_monarchy
+		}
+	}
+
+	focus = {
+		id = LIE_our_way_to_a_greater_liechtenstein
+		icon = GFX_focus_LIE_greater_liechtenstein		
+		prerequisite = { focus = LIE_currency_reform }
+		mutually_exclusive = {
+			focus = LIE_habsburg_alliance
+		}
+		x = 1
+		y = 1
+		relative_position_id = LIE_currency_reform
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+
+		}
+	}
+
+	focus = {
+		id = LIE_arm_habsburg_militia_in_hungary
+		icon = GFX_focus_generic_little_entente		
+		prerequisite = { focus = LIE_our_way_to_a_greater_liechtenstein focus = LIE_habsburg_alliance }
+		mutually_exclusive = {
+			focus = LIE_arm_monarchist_supporters
+		}
+		bypass = {
+			HUN = {
+				has_cosmetic_tag = HABS_HUN
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = LIE_habsburg_alliance
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			HUN = {
+				add_stability = -0.15
+				add_war_support = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_arm_monarchist_supporters
+		icon = GFX_focus_generic_little_entente		
+		prerequisite = { focus = LIE_our_way_to_a_greater_liechtenstein focus = LIE_our_true_capital }
+		mutually_exclusive = {
+			focus = LIE_arm_habsburg_militia_in_hungary
+		}
+		available = {
+			capital_scope = {
+				LIE = {
+					controls_state = PREV
+				}
+			}
+		}
+		available_if_capitulated = no
+		x = 4
+		y = 1
+		relative_position_id = LIE_habsburg_alliance
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			hidden_effect = {
+				division_template = {
+					name = "Infanterie-Division"
+					priority = 1
+					division_names_group = GER_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+						artillery_brigade = { x = 0 y = 3 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						recon = { x = 0 y = 1 }
+						artillery = { x = 0 y = 2 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Infanterie-Division\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+						owner = LIE
+						prioritize_location = 13257
+					}
+				}
+			}
+			custom_effect_tooltip = lie_infantery
+		}
+	}
+
+	focus = {
+		id = LIE_increase_monarchistic_supports
+		icon = GFX_focus_ger_return_of_the_kaiser		
+		prerequisite = { focus = LIE_establish_dynastic_ties }
+		prerequisite = { focus = LIE_cut_swiss_ties }
+		x = -1
+		y = 1
+		relative_position_id = LIE_establish_dynastic_ties
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			# monarchist idea
+			add_timed_idea = { idea = LIE_convince_the_people days = 356 }
+		}
+	}
+
+	focus = {
+		id = LIE_invite_the_habsburg
+		icon = GFX_goal_tripartite_pact		
+		prerequisite = { focus = LIE_establish_dynastic_ties }
+		prerequisite = { focus = LIE_cut_swiss_ties }
+		x = 1
+		y = 1
+		relative_position_id = LIE_establish_dynastic_ties
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			# bypassed with previous event
+		}
+	}
+
+	focus = {
+		id = LIE_royale_marriage
+		icon = GFX_focus_generic_monarchy_2	
+		prerequisite = { focus = LIE_increase_monarchistic_supports }
+		prerequisite = { focus = LIE_invite_the_habsburg }
+		available = {
+			neutrality > 0.5
+		}
+		x = 1
+		y = 1
+		relative_position_id = LIE_increase_monarchistic_supports
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = {
+				limit = {
+					has_country_leader = {
+						character = LIE_franz_I
+						ruling_only = yes
+					}
+				}
+				add_ideas = LIE_idea_franz_I
+			}
+			else_if = {
+				limit = {
+					has_country_leader = {
+						character = LIE_franz_II
+						ruling_only = yes
+					}
+				}
+				add_ideas = LIE_idea_franz_josef_II
+			}
+			promote_character = LIE_archduchess_of_austria
+			hidden_effect = {
+				set_party_name = {
+					ideology = neutrality
+					long_name = LIE_neutrality_party_habsburg
+					name = LIE_neutrality_party_habsburg
+				}
+				news_event = { id = news_lie.1 hours = 12 } 
+				set_cosmetic_tag = HABS_LIE
+				set_politics = {
+					ruling_party = neutrality
+					election_frequency = 36
+					elections_allowed = no
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_influence_austria_and_czechia
+		icon = GFX_focus_rom_royal_dictatorship		
+		prerequisite = { focus = LIE_royale_marriage }
+		prerequisite = { focus = LIE_habsburg_alliance }
+		available = {
+			is_subject = no
+			NOT = { has_war_with = AUS }
+			NOT = { has_war_with = CZE }
+		}
+		bypass = {
+			OR={
+				HUN = {
+				has_completed_focus = HUN_proclaim_the_restoration_of_austria_hungary
+				}
+				CZE = {
+					has_cosmetic_tag = HABS_CZE
+				}
+				AUS = {
+					has_cosmetic_tag = HABS_AUS
+				}
+			}
+		}
+		cancel_if_invalid = yes
+		x = 1
+		y = 1
+		relative_position_id = LIE_royale_marriage
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = {
+				limit = {
+					AUS = { exists = yes }
+				}
+				AUS = {
+					add_timed_idea = { idea = LIE_rekindle_imperial_sentiment days = 1095 }
+				}
+			}
+			if = {
+				limit = {
+					CZE = { exists = yes }
+				}
+				CZE = {
+					add_timed_idea = { idea = LIE_rekindle_imperial_sentiment days = 1095 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_orchestrate_a_coup_in_hungary
+		icon = GFX_focus_hun_assassinate_horthy		
+		prerequisite = { focus = LIE_influence_austria_and_czechia }
+		prerequisite = { focus = LIE_arm_habsburg_militia_in_hungary }
+		available = {	
+			is_subject = no
+			NOT = { has_war_with = AUS }
+			NOT = { has_war_with = CZE }
+			NOT = { has_war_with = HUN }
+			AUS = {
+				has_government = neutrality
+				is_subject = no
+			}
+			CZE = {
+				has_government = neutrality
+				is_subject = no
+			}
+		}
+		bypass = {
+			HUN = {
+				has_cosmetic_tag = HABS_HUN
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = LIE_influence_austria_and_czechia
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			effect_tooltip = {
+				HUN = {
+					set_party_name = {
+						ideology = neutrality
+						long_name = LIE_neutrality_party_habsburg
+						name = LIE_neutrality_party_habsburg
+					}
+					start_civil_war = {
+						ideology = neutrality
+						size = 0.85
+						capital = 43
+						states = {
+							43 155
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				set_party_name = {
+					ideology = neutrality
+					long_name = LIE_neutrality_party_habsburg
+					name = LIE_neutrality_party_habsburg
+				}
+				HUN = {
+					set_politics = {
+						ruling_party = fascism
+						last_election = "1937.6.6"
+						election_frequency = 36
+						elections_allowed = no
+					}
+					start_civil_war = {
+						ideology = neutrality
+						size = 0.85
+						capital = 43
+						states = {
+							43 155
+						}
+					}
+				}
+				random_other_country = {
+					limit = {
+						original_tag = HUN
+						has_government = neutrality
+					}
+					set_cosmetic_tag = HABS_MILITIAS
+					retire_country_leader = yes
+					HUN_habsburg_militias = {
+						add_country_leader_role = {
+						country_leader = {
+							expire = "1965.1.1"
+							ideology = despotism
+							traits = { }
+						}
+						promote_leader = yes
+						}
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_take_austria
+		icon = GFX_focus_LIE_fight_austria
+		x = 2
+		y = 0
+		relative_position_id = LIE_orchestrate_a_coup_in_hungary
+		allow_branch = {
+			has_completed_focus = LIE_orchestrate_a_coup_in_hungary
+		}
+		cost = 10
+		will_lead_to_war_with = AUS
+		ai_will_do = {
+			factor = 70
+			modifier = {
+				factor = 0.5
+				AUS = { is_in_faction = yes }
+			}
+		}
+		available = {
+			4 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			is_subject = no
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			random_country = {
+				limit = {
+					owns_state = 4
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 4 152 153 848 }
+					}
+				}
+			}
+			add_state_core = 152
+			add_state_core = 153
+			add_state_core = 848
+			add_state_core = 4
+		}
+	}
+
+	focus = {
+		id = LIE_protect_czechia
+		icon = GFX_focus_LIE_fight_czechia
+		x = 2
+		y = 0
+		relative_position_id = LIE_take_austria
+		allow_branch = {
+			has_completed_focus = LIE_orchestrate_a_coup_in_hungary
+		}
+		cost = 10
+
+		ai_will_do = {
+			factor = 60
+		}
+
+		available = {
+			is_subject = no
+			country_exists = CZE
+		}
+
+		bypass = {
+			CZE = {
+				OR = {
+					exists = no
+					is_subject = yes
+				}
+			}
+			has_global_flag = GER_reformed_austro_hungarian_empire
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			CZE = { country_event = { id = lie_LIE.5 } }
+			custom_effect_tooltip = HUN_protect_czechoslovakia_tt
+		}
+	}
+
+	focus = {
+		id = LIE_take_a_look_north
+		icon = GFX_focus_LIE_auh_north	
+		prerequisite = { focus = LIE_protect_czechia }
+		x = 1
+		y = 1
+		relative_position_id = LIE_protect_czechia
+		cost = 10
+		will_lead_to_war_with = POL
+		will_lead_to_war_with = GER
+		will_lead_to_war_with = SOV
+		ai_will_do = {
+			factor = 70
+			modifier = {
+				factor = 0.5
+				OR = {
+					POL = { is_in_faction = yes }
+					GER = { is_in_faction = yes }
+					SOV = { is_in_faction = yes }
+				}
+			}
+		}
+		available = {
+			66 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			88 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			89 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			is_subject = no
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			# GER
+			random_country = {
+				limit = {
+					owns_state = 66
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 66 67 }
+					}
+				}
+			}
+			# POL
+			random_country = {
+				limit = {
+					owns_state = 88
+					NOT = {
+						owns_state = 66
+					}
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 762 88 89 91 }
+					}
+				}
+			}
+			# SOV
+			random_country = {
+				limit = {
+					owns_state = 89
+					NOT = {
+						owns_state = 88
+					}
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 89 91 }
+					}
+				}
+			}
+			add_state_core = 66
+			add_state_core = 67
+			add_state_core = 762
+			add_state_core = 88
+			add_state_core = 89
+			add_state_core = 91
+		}
+	}
+
+	focus = {
+		id = LIE_take_a_look_east
+		icon = GFX_focus_LIE_auh_east	
+		prerequisite = { focus = LIE_take_austria }		
+		prerequisite = { focus = LIE_protect_czechia }
+		x = 1
+		y = 1
+		relative_position_id = LIE_take_austria
+		cost = 10
+		ai_will_do = {
+			factor = 70
+			modifier = {
+				factor = 0.5
+				OR = {
+					ROM = { is_in_faction = yes }
+					SOV = { is_in_faction = yes }
+				}
+			}
+		}
+		available = {
+			80 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			83 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			is_subject = no
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			# ROM
+			random_country = {
+				limit = {
+					owns_state = 83
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 76 84 82 83 }
+					}
+				}
+			}
+			# SOV
+			random_country = {
+				limit = {
+					owns_state = 80
+					NOT = {
+						owns_state = 83
+					}
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 80 }
+					}
+				}
+			}
+			add_state_core = 80
+			add_state_core = 76
+			add_state_core = 84
+			add_state_core = 82
+			add_state_core = 83
+		}
+	}
+
+	focus = {
+		id = LIE_take_a_look_south
+		icon = GFX_focus_LIE_auh_south	
+		prerequisite = { focus = LIE_take_austria }		
+		x = -1
+		y = 1
+		relative_position_id = LIE_take_austria
+		cost = 10
+		will_lead_to_war_with = YUG
+		will_lead_to_war_with = ITA
+		ai_will_do = {
+			factor = 70
+			modifier = {
+				factor = 0.5
+				OR = {
+					YUG = { is_in_faction = yes }
+					ITA = { is_in_faction = yes }
+				}
+			}
+		}
+		available = {
+			39 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			45 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			is_subject = no
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			random_country = {
+				limit = {
+					owns_state = 39
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 39 850 160 736 852 163 159 161 162 850 }
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					owns_state = 45
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 45 764 109 102 853 104 804 103 }
+					}
+				}
+			}
+			add_state_core = 39
+			add_state_core = 850
+			add_state_core = 160
+			add_state_core = 736
+			add_state_core = 852
+			add_state_core = 163
+			add_state_core = 159
+			add_state_core = 161
+			add_state_core = 162
+			add_state_core = 45
+			add_state_core = 764
+			add_state_core = 109
+			add_state_core = 102
+			add_state_core = 853
+			add_state_core = 104
+			add_state_core = 804
+			add_state_core = 103
+			add_state_core = 80
+			add_state_core = 76
+			add_state_core = 84
+			add_state_core = 82
+			add_state_core = 83
+			add_state_core = 66
+			add_state_core = 67
+			add_state_core = 762
+			add_state_core = 88
+			add_state_core = 89
+			add_state_core = 91
+		}
+	}
+
+	focus = {
+		id = LIE_form_austria_hungary
+		icon = GFX_focus_LIE_auh_formed
+		prerequisite = { focus = LIE_take_a_look_east }	
+		prerequisite = { focus = LIE_take_a_look_north }		
+		prerequisite = { focus = LIE_take_a_look_south }			
+		x = 0
+		y = 1
+		relative_position_id = LIE_take_a_look_east
+		available = {
+			LIE = {
+				controls_state = 39
+				controls_state = 160
+				controls_state = 736
+				controls_state = 852
+				controls_state = 163
+				controls_state = 159
+				controls_state = 161
+				controls_state = 162
+				controls_state = 45
+				controls_state = 764
+				controls_state = 109
+				controls_state = 102
+				controls_state = 853
+				controls_state = 104
+				controls_state = 804
+				controls_state = 103
+				controls_state = 909
+				controls_state = 155
+				controls_state = 154
+				controls_state = 69
+				controls_state = 9
+				controls_state = 74
+				controls_state = 75
+				controls_state = 70
+				controls_state = 664
+				controls_state = 71
+				controls_state = 73
+			}
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			LIE = { country_event = { id = lie_LIE.4 } }
+		}
+	}
+
+	focus = {
+		id = LIE_our_claim_of_the_hre
+		icon = GFX_focus_POL_habsburg		
+		prerequisite = { focus = LIE_reclaim_the_imperial_heritage }
+		mutually_exclusive = {
+			focus = LIE_recognize_the_habsburg_heritage
+		}
+		x = 4
+		y = 1
+		relative_position_id = LIE_reclaim_the_imperial_heritage
+		cost = 5
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.15
+			}
+			add_war_support = 0.15
+		}
+	}
+
+	focus = {
+		id = LIE_reform_the_judiciary
+		icon = GFX_focus_generic_improve_the_administration
+		prerequisite = { focus = LIE_our_claim_of_the_hre }
+		x = 0
+		y = 1
+		relative_position_id = LIE_our_claim_of_the_hre
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 150
+		}	
+	}
+
+	focus = {
+		id = LIE_establish_the_imperial_court
+		icon = GFX_focus_POL_complete_april_constitution
+		prerequisite = { focus = LIE_our_claim_of_the_hre }
+		x = 2
+		y = 1
+		relative_position_id = LIE_our_claim_of_the_hre
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+	
+	focus = {
+		id = LIE_reclaim_the_imperial_crown
+		icon = GFX_focus_hun_elect_a_king
+		prerequisite = { focus = LIE_reform_the_judiciary }
+		prerequisite = { focus = LIE_establish_the_imperial_court }
+		x = 1
+		y = 1
+		relative_position_id = LIE_reform_the_judiciary
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			LIE = {
+				add_timed_idea = { idea = LIE_claimed_hre_crown days = 356 }
+			}
+		}
+	}
+
+	focus = {
+		id = LIE_demand_a_swiss_referendum
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = LIE_our_claim_of_the_hre }
+		x = -2
+		y = 1
+		relative_position_id = LIE_our_claim_of_the_hre
+
+		cost = 10
+
+		cancel_if_invalid = yes
+
+		ai_will_do = {
+			factor = 70
+		}
+
+		available = {
+			NOT = { has_war_with = SWI }
+			is_subject = no
+			SWI = {				
+				exists = yes
+				is_subject = no				
+			}
+		}
+
+		bypass = {
+			OR = {
+				AND = {
+					owns_state = 151
+					owns_state = 847
+					owns_state = 846
+					owns_state = 3
+					owns_state = 845
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			AUS = { country_event = { id = lie_LIE.20 } }
+			custom_effect_tooltip = HUN_protect_czechoslovakia_tt
+		}
+	}
+
+	focus = {
+		id = LIE_demand_a_referendum
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = LIE_demand_a_swiss_referendum }
+		mutually_exclusive = { focus = LIE_take_austria_by_force }
+		x = 1
+		y = 1
+		relative_position_id = LIE_demand_a_swiss_referendum
+
+		cost = 5
+
+		cancel_if_invalid = yes
+
+		ai_will_do = {
+			factor = 70
+		}
+
+		available = {
+			NOT = { has_war_with = AUS }
+			is_subject = no
+			AUS = {				
+				exists = yes
+				is_subject = no				
+			}
+		}
+
+		bypass = {
+			OR = {
+				AND = {
+					owns_state = 4
+					owns_state = 848
+					owns_state = 153
+					owns_state = 152
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			SWI = { country_event = { id = lie_LIE.22 } }
+			custom_effect_tooltip = HUN_protect_czechoslovakia_tt
+		}
+	}
+
+	focus = {
+		id = LIE_take_austria_by_force
+		icon = GFX_focus_LIE_fight_austria
+		prerequisite = { focus = LIE_demand_a_swiss_referendum }
+		mutually_exclusive = { focus = LIE_demand_a_referendum }
+		x = -1
+		y = 1
+		relative_position_id = LIE_demand_a_swiss_referendum
+		cost = 5
+		will_lead_to_war_with = AUS
+		will_lead_to_war_with = GER #if after Anschluss
+
+		ai_will_do = {
+			factor = 70
+			modifier = {
+				factor = 0.5
+				AUS = { is_in_faction = yes }
+			}
+		}
+
+		available = {
+			4 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			is_subject = no
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			random_country = {
+				limit = {
+					owns_state = 4
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 4 152 153 848 }
+					}
+				}
+			}
+			add_state_core = 152
+			add_state_core = 153
+			add_state_core = 848
+			add_state_core = 4
+		}
+	}
+
+	focus = {
+		id = LIE_our_true_capital
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = LIE_take_austria_by_force focus = LIE_demand_a_referendum }
+		prerequisite = { focus = LIE_reclaim_the_imperial_crown }
+		available = {
+			LIE = {
+				controls_state = 4
+			}
+		}
+		x = 2
+		y = 1
+		relative_position_id = LIE_take_austria_by_force
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_capital = { state = 4 }
+		}
+	}
+
+	focus = {
+		id = LIE_mediterranean_focus
+		icon = GFX_focus_generic_mediterranean_sea_focus
+		prerequisite = { focus = LIE_our_true_capital }
+		x = 0
+		y = 1
+		relative_position_id = LIE_our_true_capital
+		cost = 10
+		bypass = {
+			OR = {
+				NOT = { country_exists = ITA }
+				has_war_with = ITA
+				NOT = { country_exists = YUG }
+				has_war_with = YUG
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			add_state_core = 158
+			add_state_core = 161
+			add_state_core = 162
+			add_state_core = 159
+			add_state_core = 160
+			add_state_core = 736
+			add_state_core = 852
+			add_state_core = 850
+			add_state_core = 39
+			add_state_core = 736
+			add_state_core = 852
+			add_state_core = 853
+			add_state_core = 102
+
+			create_wargoal = {
+ 				type = take_state_focus
+ 				target = ITA
+ 				expire = 0
+ 				generator = { 158 }
+ 			}
+			create_wargoal = {
+				type = take_state_focus
+				target = YUG
+				expire = 0
+				generator = { 736 852 853 102 }
+			}
+		}
+	}	
+
+	focus = {
+		id = LIE_european_focus
+		icon = GFX_focus_usa_focus_on_europe
+		prerequisite = { focus = LIE_our_true_capital }
+		x = 2
+		y = 1
+		relative_position_id = LIE_our_true_capital
+		cost = 10
+		bypass = {
+			OR = {
+				NOT = { country_exists = FRA }
+				has_war_with = FRA
+				NOT = { country_exists = CZE }
+				has_war_with = CZE
+				NOT = { country_exists = BEL }
+				has_war_with = BEL
+				NOT = { country_exists = HOL }
+				has_war_with = HOL
+				NOT = { country_exists = LUX }
+				has_war_with = LUX
+				NOT = { country_exists = GER }
+				has_war_with = GER
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			add_state_core = 735
+			add_state_core = 28
+			add_state_core = 69
+			add_state_core = 9
+			add_state_core = 75
+			add_state_core = 74
+			add_state_core = 8
+			add_state_core = 34
+			add_state_core = 6
+			add_state_core = 35
+			add_state_core = 7
+			add_state_core = 36
+			add_state_core = 52
+			add_state_core = 53
+			add_state_core = 54
+			add_state_core = 50
+			add_state_core = 55
+			add_state_core = 60
+			add_state_core = 65
+			add_state_core = 64
+			add_state_core = 59
+			add_state_core = 58
+			add_state_core = 61
+			add_state_core = 62
+			add_state_core = 68
+			add_state_core = 66
+			add_state_core = 67
+			add_state_core = 63
+			add_state_core = 56
+			add_state_core = 57
+			add_state_core = 42
+			add_state_core = 51
+
+			create_wargoal = {
+ 				type = take_state_focus
+ 				target = FRA
+ 				expire = 0
+ 				generator = { 735 28 }
+ 			}
+			create_wargoal = {
+ 				type = take_state_focus
+ 				target = CZE
+ 				expire = 0
+ 				generator = { 69 9 75 74 }
+ 			}
+			create_wargoal = {
+ 				type = take_state_focus
+ 				target = HOL
+ 				expire = 0
+ 				generator = { 35 7 36 }
+ 			}
+			create_wargoal = {
+ 				type = take_state_focus
+ 				target = BEL
+ 				expire = 0
+ 				generator = { 34 6 }
+ 			}
+			create_wargoal = {
+ 				type = take_state_focus
+ 				target = LUX
+ 				expire = 0
+ 				generator = { 8 }
+ 			}
+			create_wargoal = {
+ 				type = take_state_focus
+ 				target = GER
+ 				expire = 0
+ 				generator = { 158 161 162 159 159 160 736 852 850 39 }
+ 			}
+		}
+	}
+
+	focus = {
+		id = LIE_form_the_holy_roman_empire
+		icon = GFX_focus_LIE_form_hre
+		prerequisite = { focus = LIE_mediterranean_focus }
+		prerequisite = { focus = LIE_european_focus }
+		prerequisite = { focus = LIE_arm_monarchist_supporters }
+		x = 0
+		y = 1
+		relative_position_id = LIE_mediterranean_focus
+		cost = 10
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			LIE = { country_event = { id = lie_LIE.25 } }
+		}
+	}	
+}
