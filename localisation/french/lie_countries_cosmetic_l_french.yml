@@ -1,0 +1,32 @@
+﻿l_english:
+ALP_REP:0 "République alpine"
+ALP_REP_DEF:0 "La République alpine"
+ALP_REP_ADJ:0 "Alpin"
+
+HRE:0 "Saint Empire romain"
+HRE_DEF:0 "Le Saint Empire romain germanique"
+HRE_ADJ:0 "Saints Romains"
+
+LIE_HUN:0 "Liechtenstein-Hongrie"
+LIE_HUN_DEF:0 "Liechtenstein-Hongrie"
+LIE_HUN_ADJ:0 "Liechtenstein-hongrois"
+
+HABS_MILITIAS:0 "Milices des Habsbourg"
+HABS_MILITIAS_DEF:0 "Milices des Habsbourg"
+HABS_MILITIAS_ADJ:0 "Milices des Habsbourg"
+
+HABS_CZE:0 "Habsbourg-Bohême-Moravie"
+HABS_CZE_DEF:0 "Habsbourg-Bohême-Moravie"
+HABS_CZE_ADJ:0 "bohémien"
+
+HABS_AUS:0 "Habsbourg-Autriche"
+HABS_AUS_DEF:0 "Habsbourg-Autriche"
+HABS_AUS_ADJ:0 "autrichien"
+
+HABS_HUN:0 "Habsbourg-Hongrie"
+HABS_HUN_DEF:0 "Habsbourg-Hongrie"
+HABS_HUN_ADJ:0 "hongrois"
+
+HABS_LIE:0 "Habsbourg-Liechtenstein"
+HABS_LIE_DEF:0 "Habsbourg-Liechtenstein"
+HABS_LIE_ADJ:0 "Liechtenstein"
