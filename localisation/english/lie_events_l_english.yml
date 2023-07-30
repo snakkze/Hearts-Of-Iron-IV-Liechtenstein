@@ -127,3 +127,16 @@
   lie_LIE.30.d:0 "Today, we received an ultimatum from Germany, demanding the release of German prisoners who attempted a coup in Liechtenstein. If we refuse, we must be prepared for the possibility of invasion. Yet, if we accept this ultimatum, it may portray us as a mere puppet of Germany, unable to assert our independence to the rest of Europe."
   lie_LIE.30.a:0 "We have to back off. They are too strong."
   lie_LIE.30.b:0 "They did a coup! They deserve to be imprisoned."
+
+  lie_LIE.31.t:0 "Liechtenstein want to purchase Alaska."
+  lie_LIE.31.d:0 "[FROM.GetNameDefCap] is asking to buy Alaska from us. They claim they have a right to buy Alaska because they were asked to buy Alaska in 1876 by the Russian Empire but declined because they were unaware of the gold deposits available."
+  lie_LIE.31.a:0 "Their claim is justified."
+  lie_LIE.31.b:0 "Are they stupid? No!"
+
+  lie_LIE.32.t:0 "USA sells Alaska to us!"
+  lie_LIE.32.d:0 "[From.GetName] have accepted our purchase offer and have recognized our rightful claim of Alaska. From now on, Alaska is our rightful territory."
+  lie_LIE.32.a:0 "Great!"
+
+  lie_LIE.33.t:0 "USA declines purchase offer of Alaska."
+  lie_LIE.33.d:0 "Unfortunately, we have been informed that [FROM.GetName] will not sell us Alaska. They reject our rightful claim which lead us to only one situation. War!"
+  lie_LIE.33.a:0 "Bastarde!"

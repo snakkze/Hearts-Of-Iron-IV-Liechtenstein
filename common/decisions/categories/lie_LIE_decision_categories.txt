@@ -30,3 +30,22 @@ LIE_integrate_puppets = {
 		NOT = { has_global_flag = LIE_integrated_hungary }
 	}
 }
+
+LIE_diplomatic_interventions = {
+	priority = 100
+
+	icon = GFX_decision_category_generic_political_actions
+
+	allowed = {
+		original_tag = LIE
+	}
+
+	visible = {
+		LIE = {
+			has_completed_focus = LIE_abolish_the_monarchy
+		}
+		original_tag = LIE
+		NOT = { has_global_flag = LIE_purchased_alaska }
+	}
+}
+

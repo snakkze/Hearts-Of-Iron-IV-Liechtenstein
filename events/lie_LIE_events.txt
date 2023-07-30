@@ -1064,4 +1064,135 @@ country_event = {
 		set_country_flag = LIE_prisoner_war
 	}
 }
+
+# buy alaska from usa
+country_event = {
+    id = lie_LIE.31
+    title = lie_LIE.31.t
+    desc = lie_LIE.31.d
+    picture = GFX_report_event_SWI_cantons_flags_soldiers
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+		}
+	}
+
+	option = {
+		name = lie_LIE.31.a
+		ai_chance = {
+			base = 10 
+			modifier = {
+				add = 10 
+				has_opinion = {
+					target = LIE
+					value > 10
+				}
+			}
+			modifier = {
+				add = 20
+				has_opinion = {
+					target = LIE
+					value > 20
+				}
+			}
+			modifier = {
+				add = 30 
+				has_opinion = {
+					target = LIE
+					value > 30
+				}
+			}
+		}
+		FROM = {
+			country_event = { id = lie_LIE.32 hours = 3 }
+		}
+		effect_tooltip = {
+			LIE = {
+				transfer_state = 69
+			}
+			add_opinion_modifier = {
+				target = LIE 
+				modifier = large_increase
+			}
+		}
+	}
+
+	option = {
+		name = lie_LIE.31.b
+		ai_chance = {
+			base = 10 
+			modifier = {
+				factor = 5
+				has_opinion = {
+					target = LIE
+					value < 1
+				}
+			}
+		}
+		FROM = {
+			country_event = { id = lie_LIE.33 hours = 4  }
+		}
+	}
+}
+
+# Accepted
+country_event = {
+    id = lie_LIE.32
+    title = lie_LIE.32.t
+    desc = lie_LIE.32.d
+    picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = { #Good News everyone!   
+		name = lie_LIE.32.a
+		ai_chance = {
+			base = 10 
+		}
+
+		LIE = {
+			transfer_state = 463
+			add_timed_idea = { idea = LIE_purchased_alaska_idea days = 356 }
+		}
+
+		FROM = {
+			add_opinion_modifier = {
+				target = LIE 
+				modifier = large_increase
+			}
+		}
+	}
+}
+
+# Rejected
+country_event = {
+    id = lie_LIE.33
+    title = lie_LIE.33.t
+    desc = lie_LIE.33.d
+    picture = GFX_report_event_canada_patriation
+
+	is_triggered_only = yes
+
+	option = {
+		name = lie_LIE.33.a
+		ai_chance = {
+			base = 10 
+		}
+		random_country = {
+			limit = {
+				owns_state = 463
+			}
+			LIE = {
+				create_wargoal = {
+					type = take_state_focus
+					target = PREV
+					expire = 0
+					generator = { 69 }
+				}
+			}
+		}
+	}
+}
  

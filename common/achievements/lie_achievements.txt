@@ -72,8 +72,19 @@ lie_achievements_5 = {
     } 
 }
 
-# Remilitarize the country (Nobody has the intention to remilitarize the country)
 lie_achievements_6 = {
+    possible = {
+        difficulty > 1
+		original_tag = LIE
+    }
+ 
+    happened = {
+        has_country_flag = LIE_purchased_alaska
+    } 
+}
+
+# Remilitarize the country (Nobody has the intention to remilitarize the country)
+lie_achievements_7 = {
     possible = {
         difficulty > 1
 		original_tag = LIE
@@ -87,7 +98,7 @@ lie_achievements_6 = {
 }
 
 # Jetzt Reichsadler!
-lie_achievements_7 = {
+lie_achievements_8 = {
     possible = {
         difficulty > 1
 		original_tag = LIE
@@ -100,7 +111,7 @@ lie_achievements_7 = {
 }
 
 # Survive 1 year against Germany Mission Impossible
-lie_achievements_8 = {
+lie_achievements_9 = {
     possible = {
         difficulty > 3
         has_start_date > 1939.08.13

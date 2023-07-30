@@ -108,3 +108,39 @@ LIE_integrate_puppets = {
 		}
 	}
 }
+
+LIE_diplomatic_interventions = {
+
+	LIE_purchase_alaska = {
+
+		icon = GFX_decision_generic_tank
+
+		allowed = {
+			original_tag = LIE
+		}
+
+		cost = 150
+
+		available = {
+			LIE = {
+				has_completed_focus = LIE_abolish_the_monarchy
+			}
+		}
+
+		visible = {
+			original_tag = LIE
+			LIE = {
+				has_completed_focus = LIE_abolish_the_monarchy
+			}
+			NOT = { has_global_flag = LIE_purchased_alaska }
+		}
+
+		complete_effect = {
+			add_state_claim = 463
+			USA = { country_event = { id = lie_LIE.31 } }
+			set_global_flag = LIE_purchased_alaska
+			custom_effect_tooltip = HUN_protect_czechoslovakia_tt
+		}
+	}
+}
+

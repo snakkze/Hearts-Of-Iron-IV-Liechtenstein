@@ -431,5 +431,24 @@ ideas = {
 				stability_weekly = 0.025
 			}
 		}
+
+		LIE_purchased_alaska_idea = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1 
+
+			picture = chi_hyper_inflation5
+
+			modifier = {
+				production_speed_buildings_factor = -0.2
+				political_power_factor = -0.1
+			}
+		}
 	}
 }
