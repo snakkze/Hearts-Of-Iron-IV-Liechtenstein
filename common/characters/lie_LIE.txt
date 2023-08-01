@@ -1,5 +1,31 @@
 characters={
 
+	LIE_andreas_kieber={
+		name="Andreas Kieber"
+		portraits={
+			army={
+				small=GFX_portrait_small_LIE_andreas_kieber
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = andreas_kieber
+			allowed = {
+				original_tag = LIE
+			}
+			available = {
+				has_completed_focus = LIE_finalize_the_army
+			}
+			traits = {
+				army_chief_offensive_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}		
+	}
+
 	LIE_hermann_meier={
 		name="Hermann-Ospelt Meier"
 		portraits={

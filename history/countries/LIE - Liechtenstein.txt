@@ -41,6 +41,7 @@ recruit_character = LIE_wilhelm_beck
 
 recruit_character = LIE_hermann_meier
 recruit_character = LIE_josef_brunhart
+recruit_character = LIE_andreas_kieber
 
 1939.1.1 = {
 

@@ -829,7 +829,7 @@ focus_tree = {
 	focus = {
 		id = LIE_cultivate_the_people
 		icon = GFX_focus_research		
-		x = 13
+		x = 14
 		y = 0
 		relative_position_id = LIE_reclaim_the_imperial_heritage
 		cost = 10
@@ -842,7 +842,7 @@ focus_tree = {
 	focus = {
 		id = LIE_industrial_foundation
 		icon = GFX_goal_generic_production		
-		x = 10
+		x = 11
 		y = 0
 		relative_position_id = LIE_reclaim_the_imperial_heritage
 		cost = 10
@@ -1015,7 +1015,55 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
-			add_ideas = LIE_increased_conscriptions
+			add_timed_idea = { idea = LIE_increased_conscriptions days = 356}
+		}
+	}
+
+	focus = {
+		id = LIE_finalize_the_army
+		icon = GFX_goal_generic_military_sphere	
+		prerequisite = { focus = LIE_increased_conscriptions }	
+		prerequisite = { focus = LIE_modernize_the_army }
+		available_if_capitulated = no
+		x = -1
+		y = 1
+		relative_position_id = LIE_increased_conscriptions
+		cost = 10
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			hidden_effect = {
+				division_template = {
+					name = "Infanterie-Division"
+					priority = 1
+					division_names_group = GER_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+						artillery_brigade = { x = 0 y = 3 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						recon = { x = 0 y = 1 }
+						artillery = { x = 0 y = 2 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Infanterie-Division\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+						owner = LIE
+						prioritize_location = 13257
+					}
+				}
+			}
+			custom_effect_tooltip = lie_infantery
+			custom_effect_tooltip = lie_andreas_kieber
 		}
 	}
 
@@ -1082,6 +1130,35 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+	}
+
+	focus = {
+		id = LIE_expand_the_university_of_vaduz
+		icon = GFX_focus_research	
+		prerequisite = { focus = LIE_fund_the_industry }	
+		x = -1
+		y = 1
+		relative_position_id = LIE_fund_the_industry
+		cost = 10
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = LIE_fund_better_school_programs
+		icon = GFX_focus_research2	
+		prerequisite = { focus = LIE_expand_the_university_of_vaduz }	
+		prerequisite = { focus = LIE_expand_the_civilian_infrastructure }	
+		x = 1
+		y = 1
+		relative_position_id = LIE_expand_the_university_of_vaduz
+		cost = 10
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
 		}
 	}
 

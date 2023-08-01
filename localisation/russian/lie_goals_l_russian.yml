@@ -1,5 +1,11 @@
 ﻿l_russian:
 # Industry, Military etc.
+LIE_finalize_the_army:0 "Доработать нашу армию"
+LIE_finalize_the_army_desc:0 ""
+LIE_expand_the_university_of_vaduz:0 "Расширить университет Вадуца"
+LIE_expand_the_university_of_vaduz_desc:0 ""
+LIE_fund_better_school_programs:0 "Финансировать лучшие школьные программы"
+LIE_fund_better_school_programs_desc:0 ""
 LIE_industrial_foundation:0 "Промышленный фонд"
 LIE_industrial_foundation_desc:0 ""
 LIE_cultivate_the_people:0 "Университет Вадуца"

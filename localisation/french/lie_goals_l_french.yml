@@ -1,5 +1,11 @@
 ﻿l_french:
 # Industry, Military etc.
+LIE_finalize_the_army:0 "Finaliser notre armée"
+LIE_finalize_the_army_desc:0 ""
+LIE_expand_the_university_of_vaduz:0 "Agrandir l'université de Vaduz"
+LIE_expand_the_university_of_vaduz_desc:0 ""
+LIE_fund_better_school_programs:0 "Financer de meilleurs programmes scolaires"
+LIE_fund_better_school_programs_desc:0 ""
 LIE_industrial_foundation:0 "Fondation industrielle"
 LIE_industrial_foundation_desc:0 ""
 LIE_cultivate_the_people:0 "Université de Vaduz"

@@ -1,5 +1,11 @@
 ﻿l_english:
 # Industry, Military etc.
+LIE_finalize_the_army:0 "Finalize our Army"
+LIE_finalize_the_army_desc:0 ""
+LIE_expand_the_university_of_vaduz:0 "Expand the university of Vaduz"
+LIE_expand_the_university_of_vaduz_desc:0 ""
+LIE_fund_better_school_programs:0 "Fund better School Programs"
+LIE_fund_better_school_programs_desc:0 ""
 LIE_industrial_foundation:0 "Industrial Foundation"
 LIE_industrial_foundation_desc:0 ""
 LIE_cultivate_the_people:0 "University of Vaduz"
