@@ -1,0 +1,266 @@
+LIE_fascist = {
+	name = "Liechtenstein alternate fascist plan"
+	desc = ""
+
+	allowed = {
+		original_tag = LIE
+	}
+	enable = {
+		OR = {		
+			has_game_rule = {
+				rule = LIE_ai_behavior
+				option = FASCIST
+			}
+			has_country_flag = LIE_AI_RANDOM_FASCIST
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+		LIE_deny_our_heritage
+		LIE_international_intervention
+		LIE_bruder_im_norden
+		LIE_abandon_the_franc
+		LIE_spread_german_propaganda
+		LIE_adopt_the_reichsmarkt
+		LIE_royale_dictatorship
+		LIE_join_the_axis
+		LIE_claim_eastern_swiss_alps
+	}
+
+	research = {
+		industry = 20.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		dd_tech = 5
+	}
+
+	ideas = {
+		
+	}
+
+	traits = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+}
+
+LIE_democratic = {
+	name = "Liechtenstein alternate democratic plan"
+	desc = ""
+
+	allowed = {
+		original_tag = LIE
+	}
+	enable = {
+		OR = {		
+			has_game_rule = {
+				rule = LIE_ai_behavior
+				option = DEMOCRATIC
+			}
+			has_country_flag = LIE_AI_RANDOM_DEMOCRATIC
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+		LIE_deny_our_heritage
+		LIE_international_intervention
+		LIE_appoint_western_goverment
+		LIE_seek_defence_in_the_west
+		LIE_western_investments
+		LIE_abolish_the_monarchy
+		LIE_join_the_allies
+		LIE_join_the_un
+		LIE_fuel_of_democracy
+
+	}
+
+	research = {
+		industry = 20.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		dd_tech = 5
+	}
+
+	ideas = {
+		
+	}
+
+	traits = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+}
+
+LIE_habsburg = {
+	name = "Liechtenstein alternate habsburg plan"
+	desc = ""
+
+	allowed = {
+		original_tag = LIE
+	}
+	enable = {
+		OR = {		
+			has_game_rule = {
+				rule = LIE_ai_behavior
+				option = LIE_HABSBURG_AI
+			}
+			has_country_flag = LIE_AI_RANDOM_HABSBURG
+		}
+	}
+	abort = {
+		any_country_with_original_tag = {
+			original_tag_to_check = HUN
+			has_completed_focus = HUN_invite_the_habsburg_prince
+		}
+	}
+
+	ai_national_focuses = {
+		LIE_reclaim_the_imperial_heritage
+		LIE_recognize_the_habsburg_heritage
+		LIE_establish_dynastic_ties
+		LIE_cut_swiss_ties
+		LIE_currency_reform
+		LIE_increase_monarchistic_supports
+		LIE_invite_the_habsburg
+		LIE_royale_marriage
+		LIE_habsburg_alliance
+		LIE_influence_austria_and_czechia
+		LIE_arm_habsburg_militia_in_hungary
+		LIE_orchestrate_a_coup_in_hungary
+		LIE_protect_czechia
+		LIE_take_austria
+		LIE_take_a_look_east
+		LIE_take_a_look_north
+		LIE_take_a_look_south
+		LIE_form_austria_hungary
+
+	}
+
+	research = {
+		industry = 20.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		dd_tech = 5
+	}
+
+	ideas = {
+		
+	}
+
+	traits = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}
+
+LIE_hre = {
+	name = "Liechtenstein alternate hre plan"
+	desc = ""
+
+	allowed = {
+		original_tag = LIE
+	}
+	enable = {
+		OR = {		
+			has_game_rule = {
+				rule = LIE_ai_behavior
+				option = LIE_HRE_AI
+			}
+			has_country_flag = LIE_AI_RANDOM_HRE
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+		LIE_reclaim_the_imperial_heritage
+		LIE_our_claim_of_the_hre
+		LIE_demand_a_swiss_referendum
+		LIE_demand_a_referendum
+		LIE_reform_the_judiciary
+		LIE_establish_the_imperial_court
+		LIE_reclaim_the_imperial_crown
+		LIE_our_true_capital
+		LIE_arm_monarchist_supporters
+		LIE_mediterranean_focus
+		LIE_european_focus
+		LIE_form_the_holy_roman_empire
+	}
+
+	research = {
+		industry = 20.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		dd_tech = 5
+	}
+
+	ideas = {
+		
+	}
+
+	traits = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}

@@ -6,7 +6,22 @@ LIE_historical = {
 		original_tag = LIE
 	}
 	enable = {
-		is_historical_focus_on = yes
+		or = {
+			AND = {
+				is_historical_focus_on = yes
+				OR = {
+					has_game_rule = {
+						rule = LIE_ai_behavior
+						option = DEFAULT
+					}
+				}	
+			}
+			has_country_flag = LIE_AI_RANDOM_DEFAULT
+			has_game_rule = {
+				rule = LIE_ai_behavior
+				option = DEFAULT
+			}
+		}
 	}
 	abort = {
 		
