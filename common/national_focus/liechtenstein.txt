@@ -592,7 +592,7 @@ focus_tree = {
 		icon = GFX_goal_generic_fortify_city		
 		prerequisite = { focus = LIE_answer_swiss_ultimatum }
 		available = {
-			909 = {
+			935 = {
 				LIE = {
 					controls_state = PREV
 				}
@@ -608,7 +608,7 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL  }
 		completion_reward = {
-			909 = {
+			935 = {
 				add_building_construction = {
 					type = bunker
 					province = 13257
@@ -653,7 +653,7 @@ focus_tree = {
 		icon = GFX_focus_LIE_castle_of_vaduz
 		prerequisite = { focus = LIE_the_anschluss }
 		available = {
-			909 = {
+			935 = {
 				LIE = {
 					controls_state = PREV
 				}
@@ -2201,7 +2201,7 @@ focus_tree = {
 				controls_state = 104
 				controls_state = 804
 				controls_state = 103
-				controls_state = 909
+				controls_state = 935
 				controls_state = 155
 				controls_state = 154
 				controls_state = 69
