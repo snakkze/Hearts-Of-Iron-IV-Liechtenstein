@@ -10,7 +10,7 @@ LIE_formables_category = {
 
 		available = {
 			is_subject = no
-			controls_state = 909
+			controls_state = 935
 			controls_state = 848
 			controls_state = 153
 			controls_state = 152
