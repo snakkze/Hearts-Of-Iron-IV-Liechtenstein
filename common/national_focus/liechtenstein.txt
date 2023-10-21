@@ -1845,7 +1845,6 @@ focus_tree = {
 					controls_state = PREV
 				}
 			}
-			is_subject = no
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
@@ -1885,7 +1884,6 @@ focus_tree = {
 		}
 
 		available = {
-			is_subject = no
 			country_exists = CZE
 		}
 
@@ -1948,7 +1946,6 @@ focus_tree = {
 					controls_state = PREV
 				}
 			}
-			is_subject = no
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
@@ -2039,7 +2036,6 @@ focus_tree = {
 					controls_state = PREV
 				}
 			}
-			is_subject = no
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
@@ -2113,7 +2109,6 @@ focus_tree = {
 					controls_state = PREV
 				}
 			}
-			is_subject = no
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
@@ -2488,12 +2483,16 @@ focus_tree = {
 		y = 1
 		relative_position_id = LIE_our_true_capital
 		cost = 10
-		bypass = {
-			OR = {
-				NOT = { country_exists = ITA }
-				has_war_with = ITA
-				NOT = { country_exists = YUG }
-				has_war_with = YUG
+		available = {
+			158 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			853 = {
+				OWNER = {
+					controls_state = PREV
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -2507,22 +2506,34 @@ focus_tree = {
 			add_state_core = 852
 			add_state_core = 850
 			add_state_core = 39
-			add_state_core = 736
-			add_state_core = 852
 			add_state_core = 853
 			add_state_core = 102
 
-			create_wargoal = {
- 				type = take_state_focus
- 				target = ITA
- 				expire = 0
- 				generator = { 158 }
- 			}
-			create_wargoal = {
-				type = take_state_focus
-				target = YUG
-				expire = 0
-				generator = { 736 852 853 102 }
+			random_country = {
+				limit = {
+					owns_state = 158
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 158 }
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					owns_state = 853
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 853 }
+					}
+				}
 			}
 		}
 	}	
@@ -2535,20 +2546,36 @@ focus_tree = {
 		y = 1
 		relative_position_id = LIE_our_true_capital
 		cost = 10
-		bypass = {
-			OR = {
-				NOT = { country_exists = FRA }
-				has_war_with = FRA
-				NOT = { country_exists = CZE }
-				has_war_with = CZE
-				NOT = { country_exists = BEL }
-				has_war_with = BEL
-				NOT = { country_exists = HOL }
-				has_war_with = HOL
-				NOT = { country_exists = LUX }
-				has_war_with = LUX
-				NOT = { country_exists = GER }
-				has_war_with = GER
+		available = {
+			735 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			69 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			35 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			34 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			8 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			158 = {
+				OWNER = {
+					controls_state = PREV
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -2586,42 +2613,84 @@ focus_tree = {
 			add_state_core = 42
 			add_state_core = 51
 
-			create_wargoal = {
- 				type = take_state_focus
- 				target = FRA
- 				expire = 0
- 				generator = { 735 28 }
- 			}
-			create_wargoal = {
- 				type = take_state_focus
- 				target = CZE
- 				expire = 0
- 				generator = { 69 9 75 74 }
- 			}
-			create_wargoal = {
- 				type = take_state_focus
- 				target = HOL
- 				expire = 0
- 				generator = { 35 7 36 }
- 			}
-			create_wargoal = {
- 				type = take_state_focus
- 				target = BEL
- 				expire = 0
- 				generator = { 34 6 }
- 			}
-			create_wargoal = {
- 				type = take_state_focus
- 				target = LUX
- 				expire = 0
- 				generator = { 8 }
- 			}
-			create_wargoal = {
- 				type = take_state_focus
- 				target = GER
- 				expire = 0
- 				generator = { 158 161 162 159 159 160 736 852 850 39 }
- 			}
+			random_country = {
+				limit = {
+					owns_state = 735
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 735 }
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					owns_state = 69
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 69 }
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					owns_state = 35
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 35 }
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					owns_state = 34
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 34 }
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					owns_state = 8
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 8 }
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					owns_state = 158
+				}
+				LIE = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 158 }
+					}
+				}
+			}
 		}
 	}
 
